@@ -119,11 +119,6 @@ class ClientFormularioCreateViewModel @Inject constructor(
         state = state.copy(fecha = formattedDate)
     }
 
-    fun getFormattedDate(): String {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        return dateFormat.format(selectedDate.value.time)
-    }
-
     fun onTelefonoInput(input: String){
         state = state.copy(telefono = input)
     }

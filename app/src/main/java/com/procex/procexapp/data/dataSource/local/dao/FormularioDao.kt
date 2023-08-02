@@ -1,5 +1,6 @@
 package com.procex.procexapp.data.dataSource.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -21,6 +22,15 @@ interface FormularioDao {
     
     @Query("SELECT * FROM formulario")
     fun getFormulario(): Flow<List<FormularioEntity>>
+
+    @Query("SELECT * FROM formulario WHERE num_documento = :num_documento")
+    fun getFormularioByNum(num_documento: String): LiveData<FormularioEntity>
+
+    @Query("SELECT * FROM formulario WHERE tipo_documento = :tipo_documento")
+    fun getFormularioByType(tipo_documento: String): Flow<List<FormularioEntity>>
+
+    @Query("SELECT * FROM formulario WHERE tipo_documento = :tipo_documento AND num_documento = :numero_documento")
+    fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity>
 
     @Query("UPDATE formulario SET consulta = :consulta, name_med = :name_med, name = :name, tipo_documento = :tipo_documento, num_documento = :num_documento, sexo = :sexo , fecha = :fecha, telefono = :telefono, " +
             "antecedentes_medicos = :antecedentes_medicos, RH = :RH, historial_familiar = :historial_familiar, medicamentos_ac = " +

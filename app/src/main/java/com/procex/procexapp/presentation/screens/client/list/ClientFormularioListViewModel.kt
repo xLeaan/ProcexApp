@@ -12,43 +12,54 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientFormularioListViewModel @Inject constructor(private val formularioUseCase: FormularioUseCase): ViewModel() {
+class ClientFormularioListViewModel @Inject constructor(private val formularioUseCase: FormularioUseCase) : ViewModel() {
 
     var formularioResponse by mutableStateOf<Resource<List<Formulario>>?>(null)
         private set
 
+    private val formularioLocalList = mutableStateOf<List<Formulario>>(emptyList())
+
     var search by mutableStateOf("")
     var tipoDocumento by mutableStateOf("")
 
+    init {
+        getFormulario()
+    }
 
     fun getFormulario() = viewModelScope.launch {
         formularioResponse = Resource.Loading
-        formularioUseCase.getFormulario().collect(){ data ->
+        formularioUseCase.getFormulario().collect { data ->
             formularioResponse = data
+            if (data is Resource.Success) {
+                formularioLocalList.value = data.data // Guarda los datos localmente para filtrado offline
+            }
         }
     }
 
-    fun getFormularioByNum(num_documento: String) = viewModelScope.launch {
-        formularioResponse = Resource.Loading
-        formularioUseCase.findByNum(num_documento).collect(){
-            Log.d("ClientFormularioListViewModel", "Data: $it")
-            formularioResponse = it
+    fun getFormularioByNum(num_documento: String) {
+        viewModelScope.launch {
+            val formulariosOffline = formularioLocalList.value.filter { formulario ->
+                formulario.num_documento.contains(num_documento)
+            }
+            formularioResponse = Resource.Success(formulariosOffline)
         }
     }
 
-    fun getFormularioByType(tipo_documento: String) = viewModelScope.launch {
-        formularioResponse = Resource.Loading
-        formularioUseCase.findByType(tipo_documento).collect(){
-            Log.d("ClientFormularioListViewModel", "Data: $it")
-            formularioResponse = it
+    fun getFormularioByType(tipo_documento: String) {
+        viewModelScope.launch {
+            val formulariosOffline = formularioLocalList.value.filter { formulario ->
+                formulario.tipo_documento == tipo_documento
+            }
+            formularioResponse = Resource.Success(formulariosOffline)
         }
     }
 
-    fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String) = viewModelScope.launch {
-        formularioResponse = Resource.Loading
-        formularioUseCase.findByTypeAndNum(tipo_documento, numero_documento).collect {
-            Log.d("ClientFormularioListViewModel", "Data: $it")
-            formularioResponse = it
+    fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String) {
+        viewModelScope.launch {
+            val formulariosOffline = formularioLocalList.value.filter { formulario ->
+                formulario.tipo_documento == tipo_documento && formulario.num_documento.contains(numero_documento)
+            }
+            formularioResponse = Resource.Success(formulariosOffline)
         }
     }
 
@@ -59,6 +70,4 @@ class ClientFormularioListViewModel @Inject constructor(private val formularioUs
     fun onTipoDocumentoInput(value: String) {
         tipoDocumento = value
     }
-
-
 }

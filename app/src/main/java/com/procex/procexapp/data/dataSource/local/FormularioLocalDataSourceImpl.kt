@@ -1,5 +1,6 @@
 package com.procex.procexapp.data.dataSource.local
 
+import androidx.lifecycle.LiveData
 import com.procex.procexapp.data.dataSource.local.dao.FormularioDao
 import com.procex.procexapp.data.dataSource.local.entity.FormularioEntity
 import kotlinx.coroutines.flow.Flow
@@ -12,6 +13,12 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
     override suspend fun insertAll(formulario: List<FormularioEntity>) = formularioDao.insertAll(formulario)
 
     override fun getFormulario(): Flow<List<FormularioEntity>> = formularioDao.getFormulario()
+
+    override fun getFormularioByNum(num_documento: String): LiveData<FormularioEntity> = formularioDao.getFormularioByNum(num_documento)
+
+    override fun getFormularioByType(tipo_documento: String): Flow<List<FormularioEntity>> = formularioDao.getFormularioByType(tipo_documento)
+
+    override fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity> = formularioDao.getFormularioByTypeAndNum(tipo_documento, numero_documento)
 
 
     override suspend fun update(
