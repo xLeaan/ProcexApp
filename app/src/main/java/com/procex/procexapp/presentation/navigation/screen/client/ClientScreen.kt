@@ -1,6 +1,7 @@
 package com.procex.procexapp.presentation.navigation.screen.client
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
@@ -16,6 +17,11 @@ sealed class ClientScreen(
         route = "client/formulario/update",
         title = "Formulario",
         icon = Icons.Default.List
+    )
+    object Resumen: ClientScreen(
+        route = "client/resumen",
+        title = "Resumen",
+        icon = Icons.Default.Face
     )
     object Info: ClientScreen(
         route = "client/informacion",

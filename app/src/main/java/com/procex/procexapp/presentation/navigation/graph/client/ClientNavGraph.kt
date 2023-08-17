@@ -9,6 +9,7 @@ import com.procex.procexapp.presentation.navigation.graph.profile.ProfileNavGrap
 import com.procex.procexapp.presentation.screens.client.list.ClientFormularioListScreen
 import com.procex.procexapp.presentation.navigation.screen.client.ClientScreen
 import com.procex.procexapp.presentation.screens.client.info.InfoScreen
+import com.procex.procexapp.presentation.screens.client.resumen.ResumenScreen
 import com.procex.procexapp.presentation.screens.profile.info.ProfileScreen
 
 @Composable
@@ -21,6 +22,9 @@ fun ClientNavGraph(navController: NavHostController){
         composable(route = ClientScreen.Formulario.route){
             ClientFormularioListScreen(navController)
         }
+        composable(route = ClientScreen.Resumen.route){
+            ResumenScreen(navController)
+        }
         composable(route = ClientScreen.Info.route){
             InfoScreen(navController)
         }
@@ -29,6 +33,8 @@ fun ClientNavGraph(navController: NavHostController){
         }
 
         ProfileNavGraph(navController)
+        ResumenNavGraph(navController)
+        InfoNavGraph(navController)
         ClientFormularioNavGraph(navController)
 
     }
