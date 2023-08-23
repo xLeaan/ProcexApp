@@ -8,6 +8,8 @@ import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.domain.useCase.formulario.FormularioUseCase
 import com.procex.procexapp.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,6 +23,7 @@ class ClientFormularioListViewModel @Inject constructor(private val formularioUs
 
     var search by mutableStateOf("")
     var tipoDocumento by mutableStateOf("")
+
 
     init {
         getFormulario()

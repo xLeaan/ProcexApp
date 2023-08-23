@@ -57,6 +57,14 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
 
     override suspend fun findByTypeAndNum(tipo_documento: String, num_documento: String): Response<List<Formulario>> = formularioService.findByTypeAndNum(tipo_documento, num_documento)
 
+    override suspend fun findBySexoF(sexo: String): Response<List<Formulario>> = formularioService.findBySexoF()
+
+    override suspend fun findBySexoM(sexo: String): Response<List<Formulario>> = formularioService.findBySexoM()
+
+    override suspend fun findByMes1(created_at: String): Response<List<Formulario>> = formularioService.findByMes1()
+
+    override suspend fun findByMes2(created_at: String): Response<List<Formulario>> = formularioService.findByMes2()
+
     override suspend fun update(id: String, formulario: Formulario): Response<Formulario> = formularioService.update(id, formulario)
 
 

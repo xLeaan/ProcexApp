@@ -34,6 +34,18 @@ interface FormularioService {
         @Path("num_documento") num_documento: String
     ): Response<List<Formulario>>
 
+    @GET("formulario/searchf")
+    suspend fun findBySexoF(): Response<List<Formulario>>
+
+    @GET("formulario/searchm")
+    suspend fun findBySexoM(): Response<List<Formulario>>
+
+    @GET("formulario/searchm1")
+    suspend fun findByMes1(): Response<List<Formulario>>
+
+    @GET("formulario/searchm2")
+    suspend fun findByMes2(): Response<List<Formulario>>
+
     @Multipart
     @POST("formulario")
     suspend fun create(

@@ -13,9 +13,13 @@ import com.procex.procexapp.domain.useCase.auth.UpdateSessionUseCase
 import com.procex.procexapp.domain.useCase.formulario.CreateFormularioUseCase
 import com.procex.procexapp.domain.useCase.formulario.DeleteFormularioUseCase
 import com.procex.procexapp.domain.useCase.formulario.FindByNumUseCase
+import com.procex.procexapp.domain.useCase.formulario.FindBySexoFUseCase
+import com.procex.procexapp.domain.useCase.formulario.FindBySexoMUseCase
 import com.procex.procexapp.domain.useCase.formulario.FindByTypeAndNumUseCase
 import com.procex.procexapp.domain.useCase.formulario.FindByTypeUseCase
 import com.procex.procexapp.domain.useCase.formulario.FormularioUseCase
+import com.procex.procexapp.domain.useCase.formulario.GetFormularioMes1UseCase
+import com.procex.procexapp.domain.useCase.formulario.GetFormularioMes2UseCase
 import com.procex.procexapp.domain.useCase.formulario.GetFormularioUseCase
 import com.procex.procexapp.domain.useCase.formulario.UpdateFormularioUseCase
 import com.procex.procexapp.domain.useCase.formulario.UpdateFormularioWithImageUseCase
@@ -57,7 +61,11 @@ object UseCaseModule {
         deleteFormulario = DeleteFormularioUseCase(formularioRepository),
         findByNum = FindByNumUseCase(formularioRepository),
         findByType = FindByTypeUseCase(formularioRepository),
-        findByTypeAndNum = FindByTypeAndNumUseCase(formularioRepository)
+        findByTypeAndNum = FindByTypeAndNumUseCase(formularioRepository),
+        findBySexoF = FindBySexoFUseCase(formularioRepository),
+        findBySexoM = FindBySexoMUseCase(formularioRepository),
+        findByMes1 = GetFormularioMes1UseCase(formularioRepository),
+        findByMes2 = GetFormularioMes2UseCase(formularioRepository)
     )
 
 }

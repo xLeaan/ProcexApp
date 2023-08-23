@@ -3,11 +3,15 @@ package com.procex.procexapp.presentation.screens.client.resumen
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import com.procex.procexapp.domain.model.Formulario
+import com.procex.procexapp.presentation.screens.client.resumen.components.GetResumen
 import com.procex.procexapp.presentation.screens.client.resumen.components.ResumenContent
 
 @Composable
-fun ResumenScreen(navController: NavHostController){
+fun ResumenScreen(navController: NavHostController, formulario: List<Formulario>){
     Scaffold() {paddingValues ->
-        ResumenContent(paddingValues = paddingValues, navController = navController)
+        GetResumen(paddingValues)
     }
+
+
 }

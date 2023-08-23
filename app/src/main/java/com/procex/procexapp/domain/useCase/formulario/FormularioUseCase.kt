@@ -8,5 +8,9 @@ data class FormularioUseCase(
     val deleteFormulario: DeleteFormularioUseCase,
     val findByNum: FindByNumUseCase,
     val findByType: FindByTypeUseCase,
-    val findByTypeAndNum: FindByTypeAndNumUseCase
+    val findByTypeAndNum: FindByTypeAndNumUseCase,
+    val findBySexoF: FindBySexoFUseCase,
+    val findBySexoM: FindBySexoMUseCase,
+    val findByMes1: GetFormularioMes1UseCase,
+    val findByMes2: GetFormularioMes2UseCase
 )

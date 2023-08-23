@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.procex.procexapp.domain.model.Formulario
@@ -49,6 +50,7 @@ class ClientFormularioCreateViewModel @Inject constructor(
             Toast.makeText(context, "Es necesario una imagen para cargar el formulario", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     fun pickImage() = viewModelScope.launch {
         val result = resultingActivityHandler.getContent("image/*")

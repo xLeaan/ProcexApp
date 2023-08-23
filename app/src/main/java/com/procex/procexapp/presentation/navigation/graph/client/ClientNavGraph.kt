@@ -1,9 +1,11 @@
 package com.procex.procexapp.presentation.navigation.graph.client
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.navigation.graph.profile.ProfileNavGraph
 import com.procex.procexapp.presentation.screens.client.list.ClientFormularioListScreen
@@ -14,6 +16,7 @@ import com.procex.procexapp.presentation.screens.profile.info.ProfileScreen
 
 @Composable
 fun ClientNavGraph(navController: NavHostController){
+    val sexoList = remember { mutableListOf<Formulario>() }
     NavHost(
         navController = navController,
         route = Graph.CLIENT,
@@ -23,7 +26,7 @@ fun ClientNavGraph(navController: NavHostController){
             ClientFormularioListScreen(navController)
         }
         composable(route = ClientScreen.Resumen.route){
-            ResumenScreen(navController)
+            ResumenScreen(navController, sexoList)
         }
         composable(route = ClientScreen.Info.route){
             InfoScreen(navController)

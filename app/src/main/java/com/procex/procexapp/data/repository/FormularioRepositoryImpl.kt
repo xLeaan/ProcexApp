@@ -18,11 +18,6 @@ import java.io.File
 import android.content.Context
 import android.net.NetworkCapabilities
 import android.os.Build
-import androidx.core.content.ContextCompat.getSystemService
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.flow.map
-import java.io.IOException
 
 class FormularioRepositoryImpl(
         private val remoteDataSource: FormularioRemoteDataSource,
@@ -141,6 +136,22 @@ class FormularioRepositoryImpl(
 
     override fun findByTypeAndNum(tipo_documento: String, num_documento: String): Flow<Resource<List<Formulario>>> = flow {
         emit(ResponseToRequest.send(remoteDataSource.findByTypeAndNum(tipo_documento, num_documento)))
+    }
+
+    override fun findBySexoF(sexo: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findBySexoF(sexo)))
+    }
+
+    override fun findBySexoM(sexo: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findBySexoM(sexo)))
+    }
+
+    override fun findByMes1(created_at: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findByMes1(created_at)))
+    }
+
+    override fun findByMes2(created_at: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findByMes2(created_at)))
     }
 
 
