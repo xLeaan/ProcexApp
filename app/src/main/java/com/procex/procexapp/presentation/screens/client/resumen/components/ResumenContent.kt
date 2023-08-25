@@ -52,7 +52,8 @@ fun ResumenContent(
     val countFormulariosF = vm.countFormulariosF
     val countFormulariosM = vm.countFormulariosM
     val countFormulariosM1 = vm.countFormulariosM1
-    val countFormulariosM2 = vm.countFormulariosM2
+    val countVisitasEfectivas = vm.countFormulariosE
+    val countVisitasNoEfectivas = vm.countFormulariosNE
 
     //Log.d("Get formulario", "Data: ${ formulario }")
     Column() {
@@ -84,40 +85,16 @@ fun ResumenContent(
                     color = androidx.compose.ui.graphics.Color.Black,
                     textAlign = TextAlign.Center
                 )
-
-                Canvas(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(20.dp)
-                        .padding(horizontal = 20.dp)
-                ) {
-                    val total = countFormulariosF + countFormulariosM
-                    val porcentajeFemenino = countFormulariosF.toFloat() / total.toFloat()
-                    val anchoFemenino = size.width * porcentajeFemenino
-                    val anchoMasculino = size.width * (1 - porcentajeFemenino)
-
-                    drawRect(
-                        color = Pink80,
-                        size = Size(anchoFemenino, size.height)
-                    )
-
-                    drawRect(
-                        color = Blue200,
-                        topLeft = Offset(anchoFemenino, 0f),
-                        size = Size(anchoMasculino, size.height)
-                    )
-                }
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 15.dp),
                     horizontalArrangement = Arrangement.Center
                 ){
-                    Text(text = "Femenino: $countFormulariosF")
+                    Text(text = "Efectivas: $countVisitasEfectivas")
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = "Masculino: $countFormulariosM",
+                        text = "No efectivas: $countVisitasNoEfectivas",
                     )
                 }
 

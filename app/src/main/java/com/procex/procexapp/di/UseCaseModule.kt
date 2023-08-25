@@ -17,6 +17,8 @@ import com.procex.procexapp.domain.useCase.formulario.FindBySexoFUseCase
 import com.procex.procexapp.domain.useCase.formulario.FindBySexoMUseCase
 import com.procex.procexapp.domain.useCase.formulario.FindByTypeAndNumUseCase
 import com.procex.procexapp.domain.useCase.formulario.FindByTypeUseCase
+import com.procex.procexapp.domain.useCase.formulario.FindVisitasEfectivasUseCase
+import com.procex.procexapp.domain.useCase.formulario.FindVisitasNoEfectivasUseCase
 import com.procex.procexapp.domain.useCase.formulario.FormularioUseCase
 import com.procex.procexapp.domain.useCase.formulario.GetFormularioMes1UseCase
 import com.procex.procexapp.domain.useCase.formulario.GetFormularioMes2UseCase
@@ -65,7 +67,9 @@ object UseCaseModule {
         findBySexoF = FindBySexoFUseCase(formularioRepository),
         findBySexoM = FindBySexoMUseCase(formularioRepository),
         findByMes1 = GetFormularioMes1UseCase(formularioRepository),
-        findByMes2 = GetFormularioMes2UseCase(formularioRepository)
+        findByMes2 = GetFormularioMes2UseCase(formularioRepository),
+        findVisitasEfectivas = FindVisitasEfectivasUseCase(formularioRepository),
+        findVisitasNoEfectivas = FindVisitasNoEfectivasUseCase(formularioRepository)
     )
 
 }

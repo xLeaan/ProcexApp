@@ -1,11 +1,14 @@
 package com.procex.procexapp.presentation.screens.client.formulario.update.components
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -15,6 +18,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
@@ -234,7 +238,45 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
 
                 return age
             }
-            Text("La edad actual es: ${calculateAge(state.fecha)}")
+            fun calculateBMI(peso: String, estatura: String, edad: Int): Float? {
+                if (peso.isEmpty() || estatura.isEmpty() || edad < 18) return null
+
+                val pesoFloat = peso.toFloatOrNull()
+                val estaturaFloat = estatura.toFloatOrNull()
+
+                if (pesoFloat != null && estaturaFloat != null) {
+                    // Calcular el IMC
+                    val alturaMetros = estaturaFloat / 100 // Convertir la estatura de cm a m
+                    val imc = pesoFloat / (alturaMetros * alturaMetros)
+                    return imc
+                }
+
+                return null
+            }
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = 4.dp
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    val edad = calculateAge(state.fecha)
+                    val imc = calculateBMI(state.peso, state.estatura, edad)
+
+                    if (imc != null) {
+                        Column {
+                            Text("Edad: $edad")
+                            Text("IMC: $imc")
+                        }
+                    } else {
+                        Text("No se puede calcular el IMC debido a datos faltantes o edad menor de 18 años.")
+                    }
+                }
+            }
+
             Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(

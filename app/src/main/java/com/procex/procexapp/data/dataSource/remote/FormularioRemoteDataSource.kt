@@ -17,6 +17,8 @@ interface FormularioRemoteDataSource {
     suspend fun findBySexoM(sexo: String): Response<List<Formulario>>
     suspend fun findByMes1(created_at: String): Response<List<Formulario>>
     suspend fun findByMes2(created_at: String): Response<List<Formulario>>
+    suspend fun findVisitasEfectivas(cl_visita: String): Response<List<Formulario>>
+    suspend fun findVisitasNoEfectivas(cl_visita: String): Response<List<Formulario>>
     suspend fun update(id: String, formulario: Formulario): Response<Formulario>
     suspend fun updateWithImage(id: String, formulario: Formulario, file: File): Response<Formulario>
     suspend fun delete(id: String): Response<Unit>

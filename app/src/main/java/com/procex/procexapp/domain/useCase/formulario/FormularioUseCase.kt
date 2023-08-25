@@ -12,5 +12,7 @@ data class FormularioUseCase(
     val findBySexoF: FindBySexoFUseCase,
     val findBySexoM: FindBySexoMUseCase,
     val findByMes1: GetFormularioMes1UseCase,
-    val findByMes2: GetFormularioMes2UseCase
+    val findByMes2: GetFormularioMes2UseCase,
+    val findVisitasEfectivas: FindVisitasEfectivasUseCase,
+    val findVisitasNoEfectivas: FindVisitasNoEfectivasUseCase
 )

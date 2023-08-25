@@ -75,6 +75,10 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
 
     override suspend fun findByMes2(created_at: String): Response<List<Formulario>> = formularioService.findByMes2()
 
+    override suspend fun findVisitasEfectivas(cl_visita: String): Response<List<Formulario>> = formularioService.findVisitasEfectivas()
+
+    override suspend fun findVisitasNoEfectivas(cl_visita: String): Response<List<Formulario>> = formularioService.findVisitasNoEfectivas()
+
     override suspend fun update(id: String, formulario: Formulario): Response<Formulario> = formularioService.update(id, formulario)
 
 

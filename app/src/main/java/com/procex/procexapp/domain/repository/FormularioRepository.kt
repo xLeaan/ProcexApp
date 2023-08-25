@@ -16,6 +16,8 @@ interface FormularioRepository {
     fun findBySexoF(sexo: String): Flow<Resource<List<Formulario>>>
     fun findByMes1(created_at: String): Flow<Resource<List<Formulario>>>
     fun findByMes2(created_at: String): Flow<Resource<List<Formulario>>>
+    fun findVisitasEfectivas(cl_visita: String): Flow<Resource<List<Formulario>>>
+    fun findVisitasNoEfectivas(cl_visita: String): Flow<Resource<List<Formulario>>>
     suspend fun update(id: String, formulario: Formulario): Resource<Formulario>
     suspend fun updateWithImage(id: String, formulario: Formulario, file: File): Resource<Formulario>
     suspend fun delete(id: String): Resource<Unit>

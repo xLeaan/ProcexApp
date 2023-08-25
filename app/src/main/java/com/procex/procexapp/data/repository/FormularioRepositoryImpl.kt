@@ -154,6 +154,14 @@ class FormularioRepositoryImpl(
         emit(ResponseToRequest.send(remoteDataSource.findByMes2(created_at)))
     }
 
+    override fun findVisitasEfectivas(cl_visitas: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findVisitasEfectivas(cl_visitas)))
+    }
+
+    override fun findVisitasNoEfectivas(cl_visitas: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findVisitasNoEfectivas(cl_visitas)))
+    }
+
 
     override suspend fun update(id: String, formulario: Formulario): Resource<Formulario> {
         ResponseToRequest.send(remoteDataSource.update(id, formulario)).run {

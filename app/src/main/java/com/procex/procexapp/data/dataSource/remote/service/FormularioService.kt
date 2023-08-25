@@ -46,6 +46,12 @@ interface FormularioService {
     @GET("formulario/searchm2")
     suspend fun findByMes2(): Response<List<Formulario>>
 
+    @GET("formulario/searchve")
+    suspend fun findVisitasEfectivas(): Response<List<Formulario>>
+
+    @GET("formulario/searchvne")
+    suspend fun findVisitasNoEfectivas(): Response<List<Formulario>>
+
     @Multipart
     @POST("formulario")
     suspend fun create(
