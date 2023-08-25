@@ -19,8 +19,6 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
     override fun getFormularioByType(tipo_documento: String): Flow<List<FormularioEntity>> = formularioDao.getFormularioByType(tipo_documento)
 
     override fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity> = formularioDao.getFormularioByTypeAndNum(tipo_documento, numero_documento)
-
-
     override suspend fun update(
         id: String,
         consulta: String,
@@ -29,21 +27,32 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
         tipo_documento: String,
         num_documento: String,
         sexo: String,
+        RH: String,
         fecha: String,
         telefono: String,
-        antecedentes_medicos: String,
-        RH: String,
-        historial_familiar: String,
-        medicamentos_ac: String,
-        historial_vacunas: String,
+        tipo_visita: String,
+        cl_visita: String,
+        causa: String,
+        direccion: String,
+        barrio: String,
+        propiedad: String,
+        tensiona: String,
+        tipo_ta: String,
+        toma_ta: String,
+        resultado_ta: String,
+        oximetria: String,
+        toma_oxi: String,
+        resultado_oxi: String,
+        findrisk: String,
+        estatura: String,
+        peso: String,
         nota_uno: String,
-        nota_dos: String?,
-        seguro: String,
         image: String
+    ) = formularioDao.update(id, consulta, name_med, name, tipo_documento, num_documento, sexo, RH, fecha, telefono, tipo_visita, cl_visita,
+        causa, direccion, barrio, propiedad, tensiona, tipo_ta, toma_ta, resultado_ta, oximetria, toma_oxi, resultado_oxi,
+        findrisk, estatura, peso, nota_uno, image)
 
-    ) = formularioDao.update(id, consulta, name_med, name, tipo_documento, num_documento, sexo, fecha, telefono, antecedentes_medicos, RH,
-        historial_familiar, medicamentos_ac, historial_vacunas, nota_uno,
-        nota_dos, seguro, image)
+
 
     override suspend fun delete(id: String) = formularioDao.delete(id)
 

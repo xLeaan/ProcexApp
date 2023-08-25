@@ -44,9 +44,14 @@ import com.procex.procexapp.presentation.components.DialogCapturePicture
 import com.procex.procexapp.presentation.screens.client.formulario.create.ClientFormularioCreateViewModel
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.material.*
+import androidx.compose.material.icons.filled.Close
 import java.util.*
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.platform.LocalContext
 import java.text.SimpleDateFormat
 
@@ -70,9 +75,41 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
     val opcionesTP = listOf("RC", "TI", "CE", "CC", "PA", "MS", "AS", "CN", "PE", "SC", "CD", "PT")
     var TPExpanded by remember { mutableStateOf(false) }
 
-    val selectedDate = remember { mutableStateOf(Calendar.getInstance()) }
+    val opcionesTV = listOf("Primera vez", "Salud publica", "Seguimiento")
+    var TVExpanded by remember { mutableStateOf(false) }
+
+    val opcionesVisita = listOf("Efectiva", "No efectiva")
+    var visitaExpanded by remember { mutableStateOf(false) }
+
+    val opcionesPropiedad = listOf("Sí", "No")
+    var propiedadExpanded by remember { mutableStateOf(false) }
+
+    val opcionesTensiona = listOf("Sí", "No")
+    var tensionaExpanded by remember { mutableStateOf(false) }
+
+    val opcionesOximetria = listOf("Sí", "No")
+    var oximetriaExpanded by remember { mutableStateOf(false) }
+
+    val opcionesFindrisk = listOf("Sí", "No")
+    var findriskExpanded by remember { mutableStateOf(false) }
+
+    val opcionesTA = listOf("Sistólica", "Diastólica")
+    var TAExpanded by remember { mutableStateOf(false) }
+
     val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+    val selectedDate = remember { mutableStateOf(Calendar.getInstance()) }
     val formattedDate = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateToma_ta = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateResultado_ta = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateToma_oxi = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateResultado_oxi = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+
 
     val context = LocalContext.current
 
@@ -162,6 +199,7 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                 label = "Nombre paciente",
                 icon = Icons.Default.Person
             )
+            Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
                     value = state.tipo_documento,
@@ -202,6 +240,7 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                 icon = Icons.Default.Face,
                 keyboardType = KeyboardType.Number
             )
+            Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
                     value = state.sexo,
@@ -235,51 +274,6 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                 }
             }
             Spacer(modifier = Modifier.height(5.dp))
-            TextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = formattedDate.value,
-                onValueChange = {  },
-                label = { Text("Fecha") },
-                trailingIcon = {
-                    Icon(Icons.Default.DateRange, contentDescription = "Fecha")
-                }
-            )
-
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    val datePicker = DatePickerDialog(
-                        context,
-                        { _, year, month, dayOfMonth ->
-                            vm.onFechaInput(year, month, dayOfMonth)
-                            val selectedCalendar = Calendar.getInstance()
-                            selectedCalendar.set(year, month, dayOfMonth)
-                            formattedDate.value = dateFormat.format(selectedCalendar.time)
-                        },
-                        selectedDate.value.get(Calendar.YEAR),
-                        selectedDate.value.get(Calendar.MONTH),
-                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
-                    )
-                    datePicker.show()
-                }
-            ) {
-                Text("Seleccionar fecha")
-            }
-            DefaultTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = state.telefono,
-                onValueChange = { vm.onTelefonoInput(it) },
-                label = "Télefono",
-                icon = Icons.Default.Phone,
-                keyboardType = KeyboardType.Number
-            )
-            DefaultTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = state.antecedentes_medicos,
-                onValueChange = { vm.onAntecedentes_medicosInput(it) },
-                label = "Antecedentes médicos",
-                icon = Icons.Default.Info
-            )
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
                     value = state.RH,
@@ -312,26 +306,431 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                     }
                 }
             }
+            Spacer(modifier = Modifier.height(5.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = formattedDate.value,
+                onValueChange = {  },
+                label = { Text("Fecha de nacimiento") },
+                trailingIcon = {
+                    Icon(Icons.Default.DateRange, contentDescription = "Fecha de nacimiento")
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    val fecha_nacimiento = DatePickerDialog(
+                        context,
+                        { _, year, month, dayOfMonth ->
+                            vm.onFechaInput(year, month, dayOfMonth)
+                            val selectedCalendar = Calendar.getInstance()
+                            selectedCalendar.set(year, month, dayOfMonth)
+                            formattedDate.value = dateFormat.format(selectedCalendar.time)
+                        },
+                        selectedDate.value.get(Calendar.YEAR),
+                        selectedDate.value.get(Calendar.MONTH),
+                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
+                    )
+                    fecha_nacimiento.show()
+                }
+            ) {
+                Text("Seleccionar fecha")
+            }
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = state.historial_familiar,
-                onValueChange = { vm.onHistorial_familiarInput(it) },
-                label = "Historial familiar",
-                icon = Icons.Default.Info
+                value = state.telefono,
+                onValueChange = { vm.onTelefonoInput(it) },
+                label = "Télefono",
+                icon = Icons.Default.Phone,
+                keyboardType = KeyboardType.Number
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.tipo_visita,
+                    onValueChange = { vm.onTipo_visitaInput(it) },
+                    label = { Text("Tipo de visita") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir tipo visita",
+                            modifier = Modifier.clickable { TVExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = TVExpanded,
+                    onDismissRequest = { TVExpanded = false }
+                ) {
+                    opcionesTV.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onTipo_visitaInput(option)
+                                TVExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.cl_visita,
+                    onValueChange = { vm.onCl_visitaInput(it) },
+                    label = { Text("Clasificación de la visita") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir visita",
+                            modifier = Modifier.clickable { visitaExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = visitaExpanded,
+                    onDismissRequest = { visitaExpanded = false }
+                ) {
+                    opcionesVisita.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onCl_visitaInput(option)
+                                visitaExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            DefaultTextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = state.causa,
+                onValueChange = { vm.onCausaInput(it) },
+                label = "Causa de no efectividad(opcional)",
+                icon = Icons.Default.Close
             )
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = state.medicamentos_ac,
-                onValueChange = { vm.onMedicamentos_acInput(it) },
-                label = "Medicamentos actuales",
-                icon = Icons.Default.Info
+                value = state.direccion,
+                onValueChange = { vm.onDireccionInput(it) },
+                label = "Dirección",
+                icon = Icons.Default.LocationOn
             )
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = state.historial_vacunas,
-                onValueChange = { vm.onHistorial_vacunasInput(it) },
-                label = "Historial de vacunas",
-                icon = Icons.Default.Info
+                value = state.barrio,
+                onValueChange = { vm.onBarrioInput(it) },
+                label = "Barrio",
+                icon = Icons.Default.LocationOn
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.propiedad,
+                    onValueChange = { vm.onPropiedadInput(it) },
+                    label = { Text("¿Está en la propiedad?") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir propiedad",
+                            modifier = Modifier.clickable { propiedadExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = propiedadExpanded,
+                    onDismissRequest = { propiedadExpanded = false }
+                ) {
+                    opcionesPropiedad.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onPropiedadInput(option)
+                                propiedadExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.tensiona,
+                    onValueChange = { vm.onTensionaInput(it) },
+                    label = { Text("Toma TA") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir TA",
+                            modifier = Modifier.clickable { tensionaExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = tensionaExpanded,
+                    onDismissRequest = { tensionaExpanded = false }
+                ) {
+                    opcionesTensiona.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onTensionaInput(option)
+                                tensionaExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.tipo_ta,
+                    onValueChange = { vm.onTipo_taInput(it) },
+                    label = { Text("Tipo TA") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir tipo TA",
+                            modifier = Modifier.clickable { TAExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = TAExpanded,
+                    onDismissRequest = { TAExpanded = false }
+                ) {
+                    opcionesTA.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onTipo_taInput(option)
+                                TAExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = formattedDateToma_ta.value,
+                onValueChange = {  },
+                label = { Text("Fecha toma TA") },
+                trailingIcon = {
+                    Icon(Icons.Default.DateRange, contentDescription = "Fecha toma TA")
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    val toma_ta = DatePickerDialog(
+                        context,
+                        { _, year, month, dayOfMonth ->
+                            vm.onToma_taInput(year, month, dayOfMonth)
+                            val selectedCalendar = Calendar.getInstance()
+                            selectedCalendar.set(year, month, dayOfMonth)
+                            formattedDateToma_ta.value = dateFormat.format(selectedCalendar.time)
+                        },
+                        selectedDate.value.get(Calendar.YEAR),
+                        selectedDate.value.get(Calendar.MONTH),
+                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
+                    )
+                    toma_ta.show()
+                }
+            ) {
+                Text("Fecha toma TA")
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = formattedDateResultado_ta.value,
+                onValueChange = {  },
+                label = { Text("Fecha resultado TA") },
+                trailingIcon = {
+                    Icon(Icons.Default.DateRange, contentDescription = "Fecha resultado TA")
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    val resultado_ta = DatePickerDialog(
+                        context,
+                        { _, year, month, dayOfMonth ->
+                            vm.onResultado_taInput(year, month, dayOfMonth)
+                            val selectedCalendar = Calendar.getInstance()
+                            selectedCalendar.set(year, month, dayOfMonth)
+                            formattedDateResultado_ta.value = dateFormat.format(selectedCalendar.time)
+                        },
+                        selectedDate.value.get(Calendar.YEAR),
+                        selectedDate.value.get(Calendar.MONTH),
+                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
+                    )
+                    resultado_ta.show()
+                }
+            ) {
+                Text("Fecha resultado TA")
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.oximetria,
+                    onValueChange = { vm.onOximetriaInput(it) },
+                    label = { Text("Oximetría") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir",
+                            modifier = Modifier.clickable { oximetriaExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = oximetriaExpanded,
+                    onDismissRequest = { oximetriaExpanded = false }
+                ) {
+                    opcionesOximetria.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onOximetriaInput(option)
+                                oximetriaExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = formattedDateToma_oxi.value,
+                onValueChange = {  },
+                label = { Text("Fecha toma Oximetría") },
+                trailingIcon = {
+                    Icon(Icons.Default.DateRange, contentDescription = "Fecha toma Oximetría")
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    val toma_oxi = DatePickerDialog(
+                        context,
+                        { _, year, month, dayOfMonth ->
+                            vm.onToma_oxiInput(year, month, dayOfMonth)
+                            val selectedCalendar = Calendar.getInstance()
+                            selectedCalendar.set(year, month, dayOfMonth)
+                            formattedDateToma_oxi.value = dateFormat.format(selectedCalendar.time)
+                        },
+                        selectedDate.value.get(Calendar.YEAR),
+                        selectedDate.value.get(Calendar.MONTH),
+                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
+                    )
+                    toma_oxi.show()
+                }
+            ) {
+                Text("Fecha toma Oximetría")
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = formattedDateResultado_oxi.value,
+                onValueChange = {  },
+                label = { Text("Fecha resultado Oximetría") },
+                trailingIcon = {
+                    Icon(Icons.Default.DateRange, contentDescription = "Fecha resultado Oximetría")
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    val resultado_oxi = DatePickerDialog(
+                        context,
+                        { _, year, month, dayOfMonth ->
+                            vm.onResultado_oxiInput(year, month, dayOfMonth)
+                            val selectedCalendar = Calendar.getInstance()
+                            selectedCalendar.set(year, month, dayOfMonth)
+                            formattedDateResultado_oxi.value = dateFormat.format(selectedCalendar.time)
+                        },
+                        selectedDate.value.get(Calendar.YEAR),
+                        selectedDate.value.get(Calendar.MONTH),
+                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
+                    )
+                    resultado_oxi.show()
+                }
+            ) {
+                Text("Fecha resultado Oximetría")
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.findrisk,
+                    onValueChange = { vm.onFindriskInput(it) },
+                    label = { Text("Medición Findrisk") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir",
+                            modifier = Modifier.clickable { findriskExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = findriskExpanded,
+                    onDismissRequest = { findriskExpanded = false }
+                ) {
+                    opcionesFindrisk.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onFindriskInput(option)
+                                findriskExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            DefaultTextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = state.estatura,
+                onValueChange = { vm.onEstaturaInput(it) },
+                label = "Estatura",
+                icon = Icons.Default.MoreVert,
+                keyboardType = KeyboardType.Number
+            )
+            DefaultTextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = state.peso,
+                onValueChange = { vm.onPesoInput(it) },
+                label = "Peso",
+                icon = Icons.Default.Person,
+                keyboardType = KeyboardType.Number
             )
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
@@ -339,14 +738,6 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                 onValueChange = { vm.onNota_unoInput(it) },
                 label = "Nota",
                 icon = Icons.Default.Info
-            )
-
-            DefaultTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = state.seguro,
-                onValueChange = { vm.onSeguroInput(it) },
-                label = "Seguro",
-                icon = Icons.Default.Lock
             )
             /*Spacer(modifier = Modifier.weight(1f)) */
             DefaultButton(

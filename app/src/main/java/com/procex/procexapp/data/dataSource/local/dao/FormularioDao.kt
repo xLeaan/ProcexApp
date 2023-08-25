@@ -32,9 +32,10 @@ interface FormularioDao {
     @Query("SELECT * FROM formulario WHERE tipo_documento = :tipo_documento AND num_documento = :numero_documento")
     fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity>
 
-    @Query("UPDATE formulario SET consulta = :consulta, name_med = :name_med, name = :name, tipo_documento = :tipo_documento, num_documento = :num_documento, sexo = :sexo , fecha = :fecha, telefono = :telefono, " +
-            "antecedentes_medicos = :antecedentes_medicos, RH = :RH, historial_familiar = :historial_familiar, medicamentos_ac = " +
-            ":medicamentos_ac, historial_vacunas = :historial_vacunas, nota_uno = :nota_uno, nota_dos = :nota_dos, seguro = :seguro, image = :image WHERE id = :id")
+    @Query("UPDATE formulario SET consulta = :consulta, name_med = :name_med, name = :name, tipo_documento = :tipo_documento, num_documento = :num_documento, sexo = :sexo ,  RH = :RH, fecha = :fecha, telefono = :telefono, " +
+            "tipo_visita = :tipo_visita, cl_visita = :cl_visita, causa = :causa, direccion = :direccion, barrio = :barrio, propiedad = :propiedad, tensiona = :tensiona, tipo_ta " +
+            " = :tipo_ta, toma_ta = :toma_ta, resultado_ta = :resultado_ta, oximetria = :oximetria, toma_oxi = :toma_oxi, resultado_oxi = :resultado_oxi, findrisk = :findrisk, estatura " +
+            " = :estatura, peso = :peso, nota_uno = :nota_uno, image = :image WHERE id = :id")
 
     suspend fun update(
         id: String,
@@ -44,16 +45,26 @@ interface FormularioDao {
         tipo_documento: String,
         num_documento: String,
         sexo: String,
+        RH: String,
         fecha: String,
         telefono: String,
-        antecedentes_medicos: String,
-        RH: String,
-        historial_familiar: String,
-        medicamentos_ac: String,
-        historial_vacunas: String,
+        tipo_visita: String,
+        cl_visita: String,
+        causa: String,
+        direccion: String,
+        barrio: String,
+        propiedad: String,
+        tensiona: String,
+        tipo_ta: String,
+        toma_ta: String,
+        resultado_ta: String,
+        oximetria: String,
+        toma_oxi: String,
+        resultado_oxi: String ,
+        findrisk: String,
+        estatura: String,
+        peso: String,
         nota_uno: String,
-        nota_dos: String ? = "",
-        seguro: String,
         image: String)
     
     @Query("DELETE FROM formulario WHERE id = :id")

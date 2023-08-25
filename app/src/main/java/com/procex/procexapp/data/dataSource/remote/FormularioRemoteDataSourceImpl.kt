@@ -26,20 +26,30 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val tipo_documentoData = formulario.tipo_documento.toRequestBody(contentType.toMediaTypeOrNull())
         val num_documentoData = formulario.num_documento.toRequestBody(contentType.toMediaTypeOrNull())
         val sexoData = formulario.sexo.toRequestBody(contentType.toMediaTypeOrNull())
+        val RHData = formulario.RH.toRequestBody(contentType.toMediaTypeOrNull())
         val fechaData = formulario.fecha.toRequestBody(contentType.toMediaTypeOrNull())
         val telefonoData = formulario.telefono.toRequestBody(contentType.toMediaTypeOrNull())
-        val antecedentes_medicosData = formulario.antecedentes_medicos.toRequestBody(contentType.toMediaTypeOrNull())
-        val RHData = formulario.RH.toRequestBody(contentType.toMediaTypeOrNull())
-        val historial_familiarData = formulario.historial_familiar.toRequestBody(contentType.toMediaTypeOrNull())
-        val medicamentos_acData = formulario.medicamentos_ac.toRequestBody(contentType.toMediaTypeOrNull())
-        val historial_vacunasData = formulario.historial_vacunas.toRequestBody(contentType.toMediaTypeOrNull())
+        val tipo_visitaData = formulario.tipo_visita.toRequestBody(contentType.toMediaTypeOrNull())
+        val cl_visitaData = formulario.cl_visita.toRequestBody(contentType.toMediaTypeOrNull())
+        val causaData = formulario.causa.toRequestBody(contentType.toMediaTypeOrNull())
+        val direccionData = formulario.direccion.toRequestBody(contentType.toMediaTypeOrNull())
+        val barrioData = formulario.barrio.toRequestBody(contentType.toMediaTypeOrNull())
+        val propiedadData = formulario.propiedad.toRequestBody(contentType.toMediaTypeOrNull())
+        val tensionaData = formulario.tensiona.toRequestBody(contentType.toMediaTypeOrNull())
+        val tipo_taData = formulario.tipo_ta.toRequestBody(contentType.toMediaTypeOrNull())
+        val toma_taData = formulario.toma_ta.toRequestBody(contentType.toMediaTypeOrNull())
+        val resultado_taData = formulario.resultado_ta.toRequestBody(contentType.toMediaTypeOrNull())
+        val oximetriaData = formulario.oximetria.toRequestBody(contentType.toMediaTypeOrNull())
+        val toma_oxiData = formulario.toma_oxi.toRequestBody(contentType.toMediaTypeOrNull())
+        val resultado_oxiData = formulario.resultado_oxi.toRequestBody(contentType.toMediaTypeOrNull())
+        val findriskData = formulario.findrisk.toRequestBody(contentType.toMediaTypeOrNull())
+        val estaturaData = formulario.estatura.toRequestBody(contentType.toMediaTypeOrNull())
+        val pesoData = formulario.peso.toRequestBody(contentType.toMediaTypeOrNull())
         val nota_unoData = formulario.nota_uno.toRequestBody(contentType.toMediaTypeOrNull())
-        val nota_dosData = formulario.nota_dos?.toRequestBody(contentType.toMediaTypeOrNull())
-        val seguroData = formulario.seguro.toRequestBody(contentType.toMediaTypeOrNull())
 
-        return formularioService.create(fileFormData, consultaData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, fechaData,
-            telefonoData, antecedentes_medicosData, RHData, historial_familiarData, medicamentos_acData, historial_vacunasData,
-            nota_unoData, nota_dosData, seguroData)
+        return formularioService.create(fileFormData, consultaData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
+            telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData, resultado_taData,
+        oximetriaData, toma_oxiData, resultado_oxiData, findriskData, estaturaData, pesoData, nota_unoData)
     }
 
     override suspend fun getFormulario(): Response<List<Formulario>> {
@@ -84,19 +94,30 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val tipo_documentoData = formulario.tipo_documento.toRequestBody(contentType.toMediaTypeOrNull())
         val num_documentoData = formulario.num_documento.toRequestBody(contentType.toMediaTypeOrNull())
         val sexoData = formulario.sexo.toRequestBody(contentType.toMediaTypeOrNull())
+        val RHData = formulario.RH.toRequestBody(contentType.toMediaTypeOrNull())
         val fechaData = formulario.fecha.toRequestBody(contentType.toMediaTypeOrNull())
         val telefonoData = formulario.telefono.toRequestBody(contentType.toMediaTypeOrNull())
-        val antecedentes_medicosData = formulario.antecedentes_medicos.toRequestBody(contentType.toMediaTypeOrNull())
-        val RHData = formulario.RH.toRequestBody(contentType.toMediaTypeOrNull())
-        val historial_familiarData = formulario.historial_familiar.toRequestBody(contentType.toMediaTypeOrNull())
-        val medicamentos_acData = formulario.medicamentos_ac.toRequestBody(contentType.toMediaTypeOrNull())
-        val historial_vacunasData = formulario.historial_vacunas.toRequestBody(contentType.toMediaTypeOrNull())
+        val tipo_visitaData = formulario.tipo_visita.toRequestBody(contentType.toMediaTypeOrNull())
+        val cl_visitaData = formulario.cl_visita.toRequestBody(contentType.toMediaTypeOrNull())
+        val causaData = formulario.causa.toRequestBody(contentType.toMediaTypeOrNull())
+        val direccionData = formulario.direccion.toRequestBody(contentType.toMediaTypeOrNull())
+        val barrioData = formulario.barrio.toRequestBody(contentType.toMediaTypeOrNull())
+        val propiedadData = formulario.propiedad.toRequestBody(contentType.toMediaTypeOrNull())
+        val tensionaData = formulario.tensiona.toRequestBody(contentType.toMediaTypeOrNull())
+        val tipo_taData = formulario.tipo_ta.toRequestBody(contentType.toMediaTypeOrNull())
+        val toma_taData = formulario.toma_ta.toRequestBody(contentType.toMediaTypeOrNull())
+        val resultado_taData = formulario.resultado_ta.toRequestBody(contentType.toMediaTypeOrNull())
+        val oximetriaData = formulario.oximetria.toRequestBody(contentType.toMediaTypeOrNull())
+        val toma_oxiData = formulario.toma_oxi.toRequestBody(contentType.toMediaTypeOrNull())
+        val resultado_oxiData = formulario.resultado_oxi.toRequestBody(contentType.toMediaTypeOrNull())
+        val findriskData = formulario.findrisk.toRequestBody(contentType.toMediaTypeOrNull())
+        val estaturaData = formulario.estatura.toRequestBody(contentType.toMediaTypeOrNull())
+        val pesoData = formulario.peso.toRequestBody(contentType.toMediaTypeOrNull())
         val nota_unoData = formulario.nota_uno.toRequestBody(contentType.toMediaTypeOrNull())
-        val nota_dosData = formulario.nota_dos?.toRequestBody(contentType.toMediaTypeOrNull())
-        val seguroData = formulario.seguro.toRequestBody(contentType.toMediaTypeOrNull())
 
-        return formularioService.updateWithImage(fileFormData, id, consultaData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, fechaData, telefonoData, antecedentes_medicosData,
-        RHData, historial_familiarData, medicamentos_acData, historial_vacunasData, nota_unoData, nota_dosData, seguroData)
+        return formularioService.updateWithImage(fileFormData, id, consultaData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
+            telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData, resultado_taData,
+            oximetriaData, toma_oxiData, resultado_oxiData, findriskData, estaturaData, pesoData, nota_unoData)
     }
 
     override suspend fun delete(id: String): Response<Unit> = formularioService.delete(id)

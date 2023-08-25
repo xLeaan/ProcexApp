@@ -17,7 +17,7 @@ fun ClientFormularioCreateScreen(navController: NavHostController){
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Ficha médica",
+                title = "Formulario",
                 upAvailable = true,
                 navController = navController
             )

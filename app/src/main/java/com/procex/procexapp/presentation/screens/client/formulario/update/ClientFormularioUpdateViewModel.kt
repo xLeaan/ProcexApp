@@ -52,16 +52,26 @@ class ClientFormularioUpdateViewModel @Inject constructor(
             tipo_documento = formulario.tipo_documento,
             num_documento = formulario.num_documento,
             sexo = formulario.sexo,
+            RH = formulario.RH,
             fecha = formulario.fecha,
             telefono = formulario.telefono,
-            antecedentes_medicos = formulario.antecedentes_medicos,
-            RH = formulario.RH,
-            historial_familiar = formulario.historial_familiar,
-            medicamentos_ac = formulario.medicamentos_ac,
-            historial_vacunas = formulario.historial_vacunas,
+            tipo_visita = formulario.tipo_visita,
+            cl_visita = formulario.cl_visita,
+            causa = formulario.causa,
+            direccion = formulario.direccion,
+            barrio = formulario.barrio,
+            propiedad = formulario.propiedad,
+            tensiona = formulario.tensiona,
+            tipo_ta = formulario.tipo_ta,
+            toma_ta = formulario.toma_ta,
+            resultado_ta = formulario.resultado_ta,
+            oximetria = formulario.oximetria,
+            toma_oxi = formulario.toma_oxi,
+            resultado_oxi = formulario.resultado_oxi,
+            findrisk = formulario.findrisk,
+            estatura = formulario.estatura,
+            peso = formulario.peso,
             nota_uno = formulario.nota_uno,
-            nota_dos = formulario.nota_dos ?: "",
-            seguro = formulario.seguro,
             image = formulario.image!!
         )
     }
@@ -135,57 +145,91 @@ class ClientFormularioUpdateViewModel @Inject constructor(
         state = state.copy(sexo = input)
     }
 
-    private val selectedDate = mutableStateOf(Calendar.getInstance())
+    fun onRHInput(input: String){
+        state = state.copy(RH = input)
+    }
 
     fun onFechaInput(year: Int, month: Int, dayOfMonth: Int) {
         val formattedDate = "$dayOfMonth-${month + 1}-$year"
         state = state.copy(fecha = formattedDate)
-
     }
-
-
-
-    fun getFormattedDate(): String {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        return dateFormat.format(selectedDate.value.time)
-    }
-
 
     fun onTelefonoInput(input: String){
         state = state.copy(telefono = input)
     }
 
-    fun onAntecedentes_medicosInput(input: String){
-        state = state.copy(antecedentes_medicos = input)
+    fun onTipo_visitaInput(input: String){
+        state = state.copy(tipo_visita = input)
     }
 
-    fun onRHInput(input: String){
-        state = state.copy(RH = input)
+    fun onCl_visitaInput(input: String){
+        state = state.copy(cl_visita = input)
     }
 
-    fun onHistorial_familiarInput(input: String){
-        state = state.copy(historial_familiar = input)
+    fun onCausaInput(input: String){
+        state = state.copy(causa = input)
     }
 
-    fun onMedicamentos_acInput(input: String){
-        state = state.copy(medicamentos_ac = input)
+    fun onDireccionInput(input: String){
+        state = state.copy(direccion = input)
     }
 
-    fun onHistorial_vacunasInput(input: String){
-        state = state.copy(historial_vacunas = input)
+    fun onBarrioInput(input: String){
+        state = state.copy(barrio = input)
+    }
+
+    fun onPropiedadInput(input: String){
+        state = state.copy(propiedad = input)
+    }
+
+    fun onTensionaInput(input: String){
+        state = state.copy(tensiona = input)
+    }
+
+    fun onTipo_taInput(input: String){
+        state = state.copy(tipo_ta = input)
+    }
+
+    fun onToma_taInput(year: Int, month: Int, dayOfMonth: Int) {
+        val formattedDate = "$dayOfMonth-${month + 1}-$year"
+        state = state.copy(toma_ta = formattedDate)
+    }
+
+    fun onResultado_taInput(year: Int, month: Int, dayOfMonth: Int) {
+        val formattedDate = "$dayOfMonth-${month + 1}-$year"
+        state = state.copy(resultado_ta = formattedDate)
+    }
+
+    fun onOximetriaInput(input: String){
+        state = state.copy(oximetria = input)
+    }
+
+    fun onToma_oxiInput(year: Int, month: Int, dayOfMonth: Int) {
+        val formattedDate = "$dayOfMonth-${month + 1}-$year"
+        state = state.copy(resultado_ta = formattedDate)
+    }
+
+    fun onResultado_oxiInput(year: Int, month: Int, dayOfMonth: Int) {
+        val formattedDate = "$dayOfMonth-${month + 1}-$year"
+        state = state.copy(resultado_ta = formattedDate)
+    }
+
+    fun onFindriskInput(input: String){
+        state = state.copy(findrisk = input)
+    }
+
+    fun onEstaturaInput(input: String){
+        state = state.copy(estatura = input)
+    }
+
+    fun onPesoInput(input: String){
+        state = state.copy(peso = input)
     }
 
     fun onNota_unoInput(input: String){
         state = state.copy(nota_uno = input)
     }
 
-    fun onNota_dosInput(input: String){
-        state = state.copy(nota_dos = input)
-    }
-
-    fun onSeguroInput(input: String){
-        state = state.copy(seguro = input)
-    }
 
     fun isValid(): Boolean {
         if (state.telefono.length != 10) {
