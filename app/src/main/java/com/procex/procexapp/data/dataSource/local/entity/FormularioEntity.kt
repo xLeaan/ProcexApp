@@ -10,7 +10,6 @@ import java.util.Date
 @Entity(tableName = "formulario")
 data class FormularioEntity(
     @PrimaryKey var id: String = "",
-    @ColumnInfo(name = "consulta") var consulta: String = "",
     @ColumnInfo(name = "name_med") var name_med: String = "",
     @ColumnInfo(name = "name") var name: String = "",
     @ColumnInfo(name = "tipo_documento") var tipo_documento: String = "",

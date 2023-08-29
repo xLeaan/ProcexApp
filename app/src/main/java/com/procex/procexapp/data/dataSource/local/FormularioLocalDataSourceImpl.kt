@@ -21,7 +21,6 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
     override fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity> = formularioDao.getFormularioByTypeAndNum(tipo_documento, numero_documento)
     override suspend fun update(
         id: String,
-        consulta: String,
         name_med: String,
         name: String,
         tipo_documento: String,
@@ -48,7 +47,7 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
         peso: String,
         nota_uno: String,
         image: String
-    ) = formularioDao.update(id, consulta, name_med, name, tipo_documento, num_documento, sexo, RH, fecha, telefono, tipo_visita, cl_visita,
+    ) = formularioDao.update(id, name_med, name, tipo_documento, num_documento, sexo, RH, fecha, telefono, tipo_visita, cl_visita,
         causa, direccion, barrio, propiedad, tensiona, tipo_ta, toma_ta, resultado_ta, oximetria, toma_oxi, resultado_oxi,
         findrisk, estatura, peso, nota_uno, image)
 

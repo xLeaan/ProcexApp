@@ -37,12 +37,20 @@ class ClientFormularioResumenViewModel @Inject constructor(private val formulari
         private set
 
     init {
+        getVisitas()
         getFormularioMes1()
         getFormularioMes2()
         findBySexoF()
         findBySexoM()
         findVisitasEfectivas()
         findVisitasNoEfectivas()
+    }
+
+    fun getVisitas() = viewModelScope.launch {
+        formularioRespone = Resource.Loading
+        formularioUseCase.getFormulario().collect { data ->
+            formularioRespone = data
+        }
     }
 
     fun getFormularioMes1() = viewModelScope.launch {

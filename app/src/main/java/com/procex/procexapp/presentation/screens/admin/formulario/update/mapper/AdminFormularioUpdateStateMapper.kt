@@ -5,7 +5,6 @@ import com.procex.procexapp.presentation.screens.admin.formulario.update.AdminFo
 
 fun AdminFormularioUpdateState.toFormulario(): Formulario {
     return Formulario(
-            consulta = consulta,
             name_med = name_med,
             name = name,
             tipo_documento = tipo_documento,

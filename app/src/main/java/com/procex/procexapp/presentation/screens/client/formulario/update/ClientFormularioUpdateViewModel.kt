@@ -46,7 +46,6 @@ class ClientFormularioUpdateViewModel @Inject constructor(
 
     init {
         state = state.copy(
-            consulta = formulario.consulta,
             name_med = formulario.name_med,
             name = formulario.name,
             tipo_documento = formulario.tipo_documento,

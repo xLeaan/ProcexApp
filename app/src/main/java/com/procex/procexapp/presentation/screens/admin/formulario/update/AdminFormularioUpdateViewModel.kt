@@ -1,6 +1,8 @@
 package com.procex.procexapp.presentation.screens.admin.formulario.update
 
 import android.content.Context
+import android.opengl.ETC1.isValid
+import android.widget.Toast
 import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,7 @@ import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.domain.useCase.formulario.FormularioUseCase
 import com.procex.procexapp.domain.util.Resource
 import com.procex.procexapp.presentation.screens.admin.formulario.update.mapper.toFormulario
+import com.procex.procexapp.presentation.screens.client.formulario.update.mapper.toFormulario
 import com.procex.procexapp.presentation.util.ComposeFileProvider
 import com.procex.procexapp.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -42,7 +45,6 @@ class AdminFormularioUpdateViewModel @Inject constructor(
 
     init {
         state = state.copy(
-            consulta = formulario.consulta,
             name_med = formulario.name_med,
             name = formulario.name,
             tipo_documento = formulario.tipo_documento,
@@ -78,6 +80,16 @@ class AdminFormularioUpdateViewModel @Inject constructor(
         }
         else {
             updateFormulario()
+        }
+    }
+
+    fun createFormulario() = viewModelScope.launch {
+        if (isValid() && file != null ) {
+            formularioResponse = Resource.Loading
+            val result = formularioUseCase.createFormulario(state.toFormulario(), file!!)
+            formularioResponse = result
+        } else if (file === null) {
+            Toast.makeText(context, "Es necesario una imagen para cargar el formulario", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -212,6 +224,30 @@ class AdminFormularioUpdateViewModel @Inject constructor(
 
     fun onNota_unoInput(input: String){
         state = state.copy(nota_uno = input)
+    }
+
+    fun isValid(): Boolean {
+        if (state.telefono.length != 10) {
+            Toast.makeText(context, "El télefono no es válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.name_med == "") {
+            Toast.makeText(context, "Debe ingresar el nombre del médico", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.name == "") {
+            Toast.makeText(context, "Debe ingresar el nombre del paciente", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_documento == "") {
+            Toast.makeText(context, "Debe ingresar el tipo de documento", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.num_documento == "") {
+            Toast.makeText(context, "Debe ingresar el numero de documento", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
 
 }

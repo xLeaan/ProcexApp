@@ -50,7 +50,7 @@ fun ClientFormularioListItem(
             )
             Text(
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
-                text = formulario.consulta,
+                text = formulario.cl_visita,
                 fontWeight = FontWeight.Bold,
                 color = Color.Gray
             )

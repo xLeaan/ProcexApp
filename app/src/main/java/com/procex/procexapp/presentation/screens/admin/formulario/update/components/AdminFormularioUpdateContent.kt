@@ -134,7 +134,7 @@ fun AdminFormularioUpdateContent(paddingValues: PaddingValues, vm: AdminFormular
                 modifier = Modifier.fillMaxWidth(),
                 value = state.name_med,
                 onValueChange = { vm.onName_medInput(it) },
-                label = "Nombre médico",
+                label = "Nombre promotor",
                 icon = Icons.Default.Person
             )
             DefaultTextField(
@@ -700,6 +700,16 @@ fun AdminFormularioUpdateContent(paddingValues: PaddingValues, vm: AdminFormular
                 onValueChange = { vm.onNota_unoInput(it) },
                 label = "Nota",
                 icon = Icons.Default.Info
+            )
+            DefaultButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Subir formulario",
+                onClick = { vm.createFormulario() }
+            )
+            DefaultButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Actualizar formulario",
+                onClick = { vm.onUpdate() }
             )
 
         }

@@ -169,7 +169,6 @@ class FormularioRepositoryImpl(
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
-                        consulta = this.data.consulta,
                         name_med = this.data.name_med,
                         name = this.data.name,
                         tipo_documento = this.data.tipo_documento,
@@ -216,7 +215,6 @@ class FormularioRepositoryImpl(
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
-                        consulta = this.data.consulta,
                         name_med = this.data.name_med,
                         name = this.data.name,
                         tipo_documento = this.data.tipo_documento,

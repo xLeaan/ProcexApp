@@ -16,7 +16,6 @@ interface FormularioLocalDataSource {
     fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity>
     suspend fun update(
         id: String,
-        consulta: String,
         name_med: String,
         name: String,
         tipo_documento: String,

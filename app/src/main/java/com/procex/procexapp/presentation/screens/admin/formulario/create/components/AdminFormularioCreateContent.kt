@@ -133,43 +133,11 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                 .padding(20.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                OutlinedTextField(
-                    value = state.consulta,
-                    onValueChange = { vm.onConsultaInput(it) },
-                    label = { Text("Tipo de consulta") },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                    readOnly = true,
-                    trailingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.ArrowDropDown,
-                            contentDescription = "Expandir consulta",
-                            modifier = Modifier.clickable { consultaExpanded = true }
-                        )
-                    }
-                )
-                DropdownMenu(
-                    expanded = consultaExpanded,
-                    onDismissRequest = { consultaExpanded = false }
-                ) {
-                    opcionesConsulta.forEach { option ->
-                        DropdownMenuItem(
-                            onClick = {
-                                vm.onConsultaInput(option)
-                                consultaExpanded = false
-                            }
-                        ) {
-                            Text(text = option)
-                        }
-                    }
-                }
-            }
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = state.name_med,
                 onValueChange = { vm.onName_medInput(it) },
-                label = "Nombre médico",
+                label = "Nombre promotor",
                 icon = Icons.Default.Person
             )
             DefaultTextField(

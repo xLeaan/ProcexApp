@@ -9,7 +9,6 @@ import java.util.Date
 
 data class Formulario(
     @SerializedName("id") val id: String? = null,
-    @SerializedName("consulta") val consulta: String,
     @SerializedName("name_med") val name_med: String,
     @SerializedName("name") val name: String,
     @SerializedName("tipo_documento") val tipo_documento: String,
@@ -39,7 +38,6 @@ data class Formulario(
     ): Serializable{
         fun toJson(): String = Gson().toJson(Formulario(
             id,
-            consulta,
             name_med,
             name,
             tipo_documento,

@@ -20,7 +20,6 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val contentType = "text/plain"
         val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
         val fileFormData = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        val consultaData = formulario.consulta.toRequestBody(contentType.toMediaTypeOrNull())
         val name_medData = formulario.name_med.toRequestBody(contentType.toMediaTypeOrNull())
         val nameData = formulario.name.toRequestBody(contentType.toMediaTypeOrNull())
         val tipo_documentoData = formulario.tipo_documento.toRequestBody(contentType.toMediaTypeOrNull())
@@ -47,7 +46,7 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val pesoData = formulario.peso.toRequestBody(contentType.toMediaTypeOrNull())
         val nota_unoData = formulario.nota_uno.toRequestBody(contentType.toMediaTypeOrNull())
 
-        return formularioService.create(fileFormData, consultaData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
+        return formularioService.create(fileFormData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
             telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData, resultado_taData,
         oximetriaData, toma_oxiData, resultado_oxiData, findriskData, estaturaData, pesoData, nota_unoData)
     }
@@ -92,7 +91,6 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val contentType = "text/plain"
         val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
         val fileFormData = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        val consultaData = formulario.consulta.toRequestBody(contentType.toMediaTypeOrNull())
         val name_medData = formulario.name_med.toRequestBody(contentType.toMediaTypeOrNull())
         val nameData = formulario.name.toRequestBody(contentType.toMediaTypeOrNull())
         val tipo_documentoData = formulario.tipo_documento.toRequestBody(contentType.toMediaTypeOrNull())
@@ -119,7 +117,7 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val pesoData = formulario.peso.toRequestBody(contentType.toMediaTypeOrNull())
         val nota_unoData = formulario.nota_uno.toRequestBody(contentType.toMediaTypeOrNull())
 
-        return formularioService.updateWithImage(fileFormData, id, consultaData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
+        return formularioService.updateWithImage(fileFormData, id, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
             telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData, resultado_taData,
             oximetriaData, toma_oxiData, resultado_oxiData, findriskData, estaturaData, pesoData, nota_unoData)
     }

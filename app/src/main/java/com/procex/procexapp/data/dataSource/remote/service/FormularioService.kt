@@ -56,7 +56,6 @@ interface FormularioService {
     @POST("formulario")
     suspend fun create(
         @Part file: MultipartBody.Part,
-        @Part("consulta") consulta: RequestBody,
         @Part("name_med") name_med: RequestBody,
         @Part("name") name: RequestBody,
         @Part("tipo_documento") tipo_documento: RequestBody,
@@ -95,7 +94,6 @@ interface FormularioService {
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
         @Path("id") id: String,
-        @Part("consulta") consulta: RequestBody,
         @Part("name_med") name_med: RequestBody,
         @Part("name") name: RequestBody,
         @Part("tipo_documento") tipo_documento: RequestBody,
