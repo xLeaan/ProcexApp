@@ -251,6 +251,26 @@ class ClientFormularioUpdateViewModel @Inject constructor(
             Toast.makeText(context, "Debe ingresar el numero de documento", Toast.LENGTH_SHORT).show()
             return false
         }
+        if (state.fecha == "") {
+            Toast.makeText(context, "Debe ingresar una fecha de nacimiento", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.sexo == "") {
+            Toast.makeText(context, "Debe ingresar el género del paciente", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.cl_visita == "No efectiva" && state.causa == "") {
+            Toast.makeText(context, "Si la visita no fue efectiva debe ingresar la causa", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "" && state.resultado_ta == "") {
+            Toast.makeText(context, "Si el paciente tiene TA debe marcar el tipo, toma y resultado", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.oximetria == "Sí" && state.toma_oxi == "" && state.resultado_oxi == "") {
+            Toast.makeText(context, "Si marca oximentria debe marcar una fecha de toma y resultado", Toast.LENGTH_SHORT).show()
+            return false
+        }
         return true
     }
 
