@@ -48,8 +48,8 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
         state = state.copy(email = input)
     }
 
-    fun onPhoneInput(input: String){
-        state = state.copy(phone = input)
+    fun onDocumentoInput(input: String){
+        state = state.copy(documento = input)
     }
 
     fun onPasswordInput(input: String){
@@ -73,8 +73,8 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
             errorMessage = "El campo de email no puede estar vacío"
             return false
         }
-        else if(state.phone == ""){
-            errorMessage = "El campo de telefono no puede estar vacío"
+        else if(state.documento == ""){
+            errorMessage = "El campo de documento no puede estar vacío"
             return false
         }
         else if(state.password == ""){

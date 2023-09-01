@@ -35,10 +35,9 @@ fun ClientNavGraph(navController: NavHostController){
             ProfileScreen(navController)
         }
 
-        ProfileNavGraph(navController)
+        ClientFormularioNavGraph(navController)
         ResumenNavGraph(navController)
         InfoNavGraph(navController)
-        ClientFormularioNavGraph(navController)
-
+        ProfileNavGraph(navController)
     }
 }

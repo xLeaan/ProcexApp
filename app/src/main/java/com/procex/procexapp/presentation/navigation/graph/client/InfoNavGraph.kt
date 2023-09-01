@@ -12,7 +12,7 @@ import com.procex.procexapp.presentation.screens.profile.update.ProfileUpdateScr
 
 fun NavGraphBuilder.InfoNavGraph(navController: NavHostController) {
     navigation(
-        route = Graph.PROFILE,
+        route = Graph.INFO,
         startDestination = InfoScreen.InfoUpdate.route
     ) {
         composable(

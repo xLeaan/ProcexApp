@@ -28,7 +28,6 @@ interface UsersService {
         @Path("id") id: String,
         @Part("name") name: RequestBody,
         @Part("lastname") lastname: RequestBody,
-        @Part("phone") phone: RequestBody,
 
         ): Response<User>
 

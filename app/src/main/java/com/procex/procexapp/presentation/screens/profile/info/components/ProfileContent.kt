@@ -22,6 +22,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
@@ -161,15 +162,15 @@ fun ProfileContent(paddingValues: PaddingValues, navController:NavHostController
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Email,
+                            imageVector = Icons.Default.Face,
                             contentDescription = ""
                         )
                         Column(
                             modifier = Modifier.padding(horizontal = 5.dp)
                         ) {
-                            Text(text = vm.user?.email ?: "")
+                            Text(text = vm.user?.documento ?: "")
                             Text(
-                                text = "Correo Electrónico",
+                                text = "Documento",
                                 fontSize = 12.sp,
                                 color = Color.Gray
                             )
@@ -182,15 +183,15 @@ fun ProfileContent(paddingValues: PaddingValues, navController:NavHostController
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Phone,
+                            imageVector = Icons.Default.Email,
                             contentDescription = ""
                         )
                         Column(
                             modifier = Modifier.padding(horizontal = 5.dp)
                         ) {
-                            Text(text = vm.user?.phone ?: "")
+                            Text(text = vm.user?.email ?: "")
                             Text(
-                                text = "Télefono",
+                                text = "Correo Electrónico",
                                 fontSize = 12.sp,
                                 color = Color.Gray
                             )

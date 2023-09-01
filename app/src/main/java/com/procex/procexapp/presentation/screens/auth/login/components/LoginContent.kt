@@ -21,6 +21,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.*
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -121,13 +122,13 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = state.email,
+                        value = state.documento,
                         onValueChange = {text ->
-                            vm.onEmailInput(text)
+                            vm.onDocumentoInput(text)
                         },
-                        label = "Correo Electronico",
-                        icon = Icons.Default.Email,
-                        keyboardType = KeyboardType.Email
+                        label = "Num. Documento",
+                        icon = Icons.Default.Face,
+                        keyboardType = KeyboardType.Number
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),

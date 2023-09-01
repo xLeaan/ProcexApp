@@ -15,8 +15,8 @@ class AuthRepositoryImpl(
 
     ): AuthRepository {
 
-    override suspend fun login(email: String, password: String): Resource<AuthResponse> = ResponseToRequest.send(
-        authRemoteDataSource.login(email,password))
+    override suspend fun login(documento: String, password: String): Resource<AuthResponse> = ResponseToRequest.send(
+        authRemoteDataSource.login(documento,password))
 
     override suspend fun register(user: User): Resource<AuthResponse> = ResponseToRequest.send(
         authRemoteDataSource.register(user)

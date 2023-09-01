@@ -16,8 +16,8 @@ fun ClientHomeScreen(navController: NavHostController = rememberNavController())
     Scaffold(
         bottomBar = { ClientBottomBar(navController = navController) }
     ) { paddingValues ->
-        Box(modifier = Modifier.padding(paddingValues))
+        Box(
+            modifier = Modifier.padding(paddingValues))
         ClientNavGraph(navController = navController)
-
     }
 }

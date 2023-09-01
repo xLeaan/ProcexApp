@@ -8,7 +8,7 @@ import retrofit2.Response
 
 class AuthRemoteDataSourceImpl(private val authService: AuthService): AuthRemoteDataSource {
 
-        override suspend fun login(email: String, password: String) = authService.login(email, password)
+        override suspend fun login(documento: String, password: String) = authService.login(documento, password)
 
         override suspend fun register(user: User): Response<AuthResponse> = authService.register(user)
 }

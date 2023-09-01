@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
@@ -138,10 +139,10 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = state.phone,
-                        onValueChange = {  vm.onPhoneInput(it) },
-                        label = "Teléfono",
-                        icon = Icons.Default.Phone,
+                        value = state.documento,
+                        onValueChange = {  vm.onDocumentoInput(it) },
+                        label = "Num. Documento",
+                        icon = Icons.Default.Face,
                         keyboardType = KeyboardType.Number
                     )
                     DefaultTextField(

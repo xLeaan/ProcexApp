@@ -222,6 +222,7 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                     }
                 }
             }
+            Spacer(modifier = Modifier.height(10.dp))
             fun calculateAge(birthDate: String): Int {
                 if (birthDate.isEmpty()) return 0
 
@@ -238,6 +239,7 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
 
                 return age
             }
+
             fun calculateBMI(peso: String, estatura: String, edad: Int): Float? {
                 if (peso.isEmpty() || estatura.isEmpty() || edad < 18) return null
 
@@ -253,15 +255,16 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
 
                 return null
             }
+
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 elevation = 4.dp
             ) {
-                Row(
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     val edad = calculateAge(state.fecha)
                     val imc = calculateBMI(state.peso, state.estatura, edad)
@@ -269,10 +272,13 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                     if (imc != null) {
                         Column {
                             Text("Edad: $edad")
+                            Spacer(modifier = Modifier.height(10.dp))
                             Text("IMC: $imc")
                         }
                     } else {
-                        Text("No se puede calcular el IMC debido a datos faltantes o edad menor de 18 años.")
+                        Text("Edad: $edad")
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text("No se puede calcular el IMC debido a que la edad es menor de 18 años.")
                     }
                 }
             }

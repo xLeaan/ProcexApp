@@ -127,13 +127,6 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
                         label = "Apellido",
                         icon = Icons.Outlined.Person
                     )
-                    DefaultTextField(
-                        modifier = Modifier.fillMaxWidth(),
-                        value = state.phone,
-                        onValueChange = { vm.onPhoneInput(it) },
-                        label = "Télefono",
-                        icon = Icons.Default.Phone
-                    )
 
                     Spacer(modifier = Modifier.height(20.dp))
                     DefaultButton(

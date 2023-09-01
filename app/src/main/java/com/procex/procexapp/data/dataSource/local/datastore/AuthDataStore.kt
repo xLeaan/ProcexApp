@@ -28,7 +28,7 @@ class AuthDatastore constructor(private val dataStore: DataStore<Preferences>) {
         }
         authResponse.user?.name = user.name
         authResponse.user?.lastname = user.lastname
-        authResponse.user?.phone = user.phone
+        //authResponse.user?.documento = user.documento
 
         if(!user.img.isNullOrBlank()) authResponse.user?.img = user.img
         dataStore.edit { pref ->

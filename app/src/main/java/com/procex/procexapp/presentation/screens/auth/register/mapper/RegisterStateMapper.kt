@@ -8,7 +8,7 @@ fun RegisterState.toUser(): User{
         name = name,
         lastname = lastname,
         email = email,
-        phone = phone,
+        documento = documento,
         password = password
     )
 }

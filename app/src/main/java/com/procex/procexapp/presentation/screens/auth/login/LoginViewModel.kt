@@ -49,15 +49,15 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     fun login() = viewModelScope.launch {
         if(isValidForm()) {
             loginResponse = Resource.Loading // ESPERANDO
-            val result = authUseCase.login(state.email, state.password) // RETORNA UNA RESPUESTA
+            val result = authUseCase.login(state.documento, state.password) // RETORNA UNA RESPUESTA
             loginResponse = result // EXITOSA / ERROR
             Log.d("LoginViewModel", "Response: ${loginResponse}")
         }
     }
 
 
-    fun onEmailInput(email: String){
-        state = state.copy(email = email)
+    fun onDocumentoInput(documento: String){
+        state = state.copy(documento = documento)
     }
 
     fun onPasswordlInput(password: String){
@@ -65,8 +65,8 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     }
 
     fun isValidForm(): Boolean {
-        if(!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
-            errorMessage = "El email no es válido"
+        if (!state.documento.matches(Regex("\\d+"))) {
+            errorMessage = "El documento no es válido"
             return false
         }
         else if(state.password.length < 6){

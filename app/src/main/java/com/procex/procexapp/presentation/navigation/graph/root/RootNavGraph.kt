@@ -3,6 +3,7 @@ package com.procex.procexapp.presentation.navigation.graph.root
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.navigation.graph.auth.AuthNavGraph
 import com.procex.procexapp.presentation.navigation.graph.roles.RolesNavGraph

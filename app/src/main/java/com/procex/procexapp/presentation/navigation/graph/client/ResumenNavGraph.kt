@@ -13,7 +13,7 @@ import com.procex.procexapp.presentation.screens.profile.update.ProfileUpdateScr
 
 fun NavGraphBuilder.ResumenNavGraph(navController: NavHostController) {
     navigation(
-        route = Graph.PROFILE,
+        route = Graph.RESUMEN,
         startDestination = ResumenScreen.ResumenUpdate.route
     ) {
         composable(

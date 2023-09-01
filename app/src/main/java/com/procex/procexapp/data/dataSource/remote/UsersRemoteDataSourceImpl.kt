@@ -22,9 +22,8 @@ class UsersRemoteDataSourceImpl(private val usersService: UsersService): UsersRe
                 val fileFormData = MultipartBody.Part.createFormData("file", file.name, requestFile)
                 val nameData = user.name.toRequestBody(contentType.toMediaTypeOrNull())
                 val lastnameData = user.lastname.toRequestBody(contentType.toMediaTypeOrNull())
-                val phoneData = user.phone.toRequestBody(contentType.toMediaTypeOrNull())
 
-                return usersService.updateWithImage(fileFormData, id, nameData, lastnameData, phoneData)
+                return usersService.updateWithImage(fileFormData, id, nameData, lastnameData)
 
         }
 }

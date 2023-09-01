@@ -14,7 +14,7 @@ sealed class ClientScreen(
     ){
 
     object Formulario: ClientScreen(
-        route = "client/formulario/update",
+        route = "client/formulario",
         title = "Formulario",
         icon = Icons.Default.List
     )
@@ -33,7 +33,5 @@ sealed class ClientScreen(
         title = "Perfil",
         icon = Icons.Default.Person
     )
-
-
 
 }
