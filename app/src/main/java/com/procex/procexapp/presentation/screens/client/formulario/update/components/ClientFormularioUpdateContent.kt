@@ -256,6 +256,26 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                 return null
             }
 
+            fun calcularPorcentaje(edad: Int, peso: String): String {
+
+                val pesoFloat = peso.toFloatOrNull()
+
+                if (edad == 1 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 10) * 15
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                }
+                return ""
+            }
+
+
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 elevation = 4.dp
@@ -268,6 +288,7 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                 ) {
                     val edad = calculateAge(state.fecha)
                     val imc = calculateBMI(state.peso, state.estatura, edad)
+                    val desnutricion = calcularPorcentaje(edad, state.peso)
 
                     if (imc != null) {
                         Column {
@@ -275,7 +296,12 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                             Spacer(modifier = Modifier.height(10.dp))
                             Text("IMC: $imc")
                         }
-                    } else {
+                    } else if (edad == 1 ){
+                        Text("Edad: $edad")
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text("Tipo de desnutrición: $desnutricion")
+                    }
+                    else {
                         Text("Edad: $edad")
                         Spacer(modifier = Modifier.height(10.dp))
                         Text("No se puede calcular el IMC debido a que la edad es menor de 18 años.")
