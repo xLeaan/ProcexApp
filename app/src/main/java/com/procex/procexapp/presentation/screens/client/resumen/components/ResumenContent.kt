@@ -24,6 +24,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioResumenViewModel
+import com.procex.procexapp.presentation.ui.Blue200
+import com.procex.procexapp.presentation.ui.Pink80
 
 @Composable
 fun ResumenContent(
@@ -34,6 +36,9 @@ fun ResumenContent(
     val countVisitasEfectivas = vm.countFormulariosE
     val countVisitasNoEfectivas = vm.countFormulariosNE
     val visitas = countVisitasEfectivas + countVisitasNoEfectivas
+
+    val formulariosF = vm.countFormulariosF
+    val formulariosM = vm.countFormulariosM
 
     //Log.d("Get formulario", "Data: ${ formulario }")
     Column() {
@@ -100,6 +105,62 @@ fun ResumenContent(
                     color = androidx.compose.ui.graphics.Color.Black,
                     textAlign = TextAlign.Center
                 )
+
+            }
+        }
+        Spacer(modifier = Modifier.height(15.dp))
+        Card(
+            modifier = Modifier
+                .padding(bottom = 15.dp),
+            elevation = 4.dp,
+            shape = RoundedCornerShape(20.dp)
+        ) {
+            Column {
+                Text(
+                    modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+                    text = "Informe de géneros",
+                    fontWeight = FontWeight.Bold,
+                    color = androidx.compose.ui.graphics.Color.Black,
+                    textAlign = TextAlign.Center
+                )
+
+                // Dibuja las barras gráficas
+                Canvas(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(20.dp)
+                        .padding(horizontal = 20.dp)
+                ) {
+                    val total = formulariosF + formulariosM
+                    val porcentajeFemenino = formulariosF.toFloat() / total.toFloat()
+                    val anchoFemenino = size.width * porcentajeFemenino
+                    val anchoMasculino = size.width * (1 - porcentajeFemenino)
+
+                    drawRect(
+                        color = Pink80,
+                        size = Size(anchoFemenino, size.height)
+                    )
+
+                    drawRect(
+                        color = Blue200,
+                        topLeft = Offset(anchoFemenino, 0f),
+                        size = Size(anchoMasculino, size.height)
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 15.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(text = "Femenino: $formulariosF")
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "Masculino: $formulariosM",
+                    )
+                }
+
             }
         }
     }
