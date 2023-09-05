@@ -382,7 +382,7 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                 modifier = Modifier.fillMaxWidth(),
                 value = state.causa,
                 onValueChange = { vm.onCausaInput(it) },
-                label = "Causa de no efectividad(opcional)",
+                label = "Causa de no efectividad(solo si la visita es no efectiva)",
                 icon = Icons.Default.Close
             )
             DefaultTextField(
@@ -465,6 +465,7 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                     }
                 }
             }
+            Text(text = "Si la respuesta es No, no debe cambiar las fechas siguientes")
             Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
@@ -591,6 +592,7 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                     }
                 }
             }
+            Text(text = "Si la respuesta es No, no debe cambiar las fechas siguientes")
             Spacer(modifier = Modifier.height(5.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),

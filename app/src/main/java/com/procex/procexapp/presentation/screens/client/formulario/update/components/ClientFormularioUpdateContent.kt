@@ -481,7 +481,7 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                     else {
                         Text("Edad: $edad")
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text("No se puede calcular el IMC debido a que la edad es menor de 18 años.")
+                        Text("No se puede calcular por falta de datos")
                     }
                 }
             }
