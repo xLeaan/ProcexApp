@@ -261,7 +261,40 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                 val pesoFloat = peso.toFloatOrNull()
 
                 if (edad == 1 && pesoFloat != null) {
-                    val resultado = (pesoFloat / 10) * 15
+                    val resultado = (pesoFloat / 10) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 2 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 13) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 3 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 15) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 4 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 17) * 100
                     if (resultado <= 85) {
                         return "Desnutrición severa"
                     } else if (resultado <= 86 && resultado >= 89) {
@@ -272,7 +305,151 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                         return "Normal"
                     }
                 }
-                return ""
+                else if (edad == 5 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 19) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 6 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 21) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 7 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 23) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 8 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 26) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 9 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 29) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 10 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 32) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 11 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 36) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 12 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 41) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 13 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 47) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 14 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 52) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 15 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 57) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 16 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 62) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                } else if (edad == 17 && pesoFloat != null) {
+                    val resultado = (pesoFloat / 66) * 100
+                    if (resultado <= 85) {
+                        return "Desnutrición severa"
+                    } else if (resultado <= 86 && resultado >= 89) {
+                        return "Desnutrición moderada"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Desnutrición leve"
+                    } else if (resultado <= 90 && resultado >= 95) {
+                        return "Normal"
+                    }
+                }
+                return "El paciente puede estar por encima de su peso esperado"
             }
 
 
@@ -296,10 +473,10 @@ fun ClientFormularioUpdateContent(paddingValues: PaddingValues, vm: ClientFormul
                             Spacer(modifier = Modifier.height(10.dp))
                             Text("IMC: $imc")
                         }
-                    } else if (edad == 1 ){
+                    } else if (edad < 18){
                         Text("Edad: $edad")
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text("Tipo de desnutrición: $desnutricion")
+                        Text("Peso: $desnutricion")
                     }
                     else {
                         Text("Edad: $edad")
