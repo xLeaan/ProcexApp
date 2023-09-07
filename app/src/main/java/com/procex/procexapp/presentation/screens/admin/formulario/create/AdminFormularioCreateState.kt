@@ -1,7 +1,7 @@
 package com.procex.procexapp.presentation.screens.admin.formulario.create
 
 data class AdminFormularioCreateState(
-    val consulta: String = "",
+    val estado: String = "",
     val name_med: String = "",
     val name: String = "",
     val tipo_documento: String = "",

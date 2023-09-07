@@ -18,6 +18,12 @@ interface FormularioService {
     @GET("formulario")
     suspend fun getFormulario(): Response<List<Formulario>>
 
+    @GET("formulario/listo")
+    suspend fun findReady(): Response<List<Formulario>>
+
+    @GET("formulario/pendiente")
+    suspend fun findNotReady(): Response<List<Formulario>>
+
     @GET("formulario/search/{num_documento}")
     suspend fun findByNum(
         @Path("num_documento") num_documento: String
@@ -56,6 +62,7 @@ interface FormularioService {
     @POST("formulario")
     suspend fun create(
         @Part file: MultipartBody.Part,
+        @Part("estado") estado: RequestBody,
         @Part("name_med") name_med: RequestBody,
         @Part("name") name: RequestBody,
         @Part("tipo_documento") tipo_documento: RequestBody,
@@ -94,6 +101,7 @@ interface FormularioService {
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
         @Path("id") id: String,
+        @Part("estado") estado: RequestBody,
         @Part("name_med") name_med: RequestBody,
         @Part("name") name: RequestBody,
         @Part("tipo_documento") tipo_documento: RequestBody,

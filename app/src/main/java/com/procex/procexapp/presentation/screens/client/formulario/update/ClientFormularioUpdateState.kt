@@ -1,7 +1,7 @@
 package com.procex.procexapp.presentation.screens.client.formulario.update
 
 data class ClientFormularioUpdateState(
-    val consulta: String = "",
+    val estado: String = "",
     val name_med: String = "",
     val name: String = "",
     val tipo_documento: String = "",

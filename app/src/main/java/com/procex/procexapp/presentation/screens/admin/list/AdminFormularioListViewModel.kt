@@ -20,6 +20,7 @@ class AdminFormularioListViewModel @Inject constructor(private val formularioUse
         private set
 
     var search by mutableStateOf("")
+    var estado by mutableStateOf("")
     var tipoDocumento by mutableStateOf("")
 
     fun getFormulario() = viewModelScope.launch {

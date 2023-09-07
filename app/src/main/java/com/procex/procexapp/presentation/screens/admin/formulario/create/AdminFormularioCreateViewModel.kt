@@ -64,7 +64,7 @@ class AdminFormularioCreateViewModel @Inject constructor(
     }
     fun clearForm(){
         state = state.copy(
-            consulta = "",
+            estado = "",
             name_med = "",
             name = "",
             sexo = "",
@@ -93,8 +93,8 @@ class AdminFormularioCreateViewModel @Inject constructor(
         formularioResponse = null
     }
 
-    fun onConsultaInput(input: String){
-        state = state.copy(consulta = input)
+    fun onEstadoInput(input: String){
+        state = state.copy(estado = input)
     }
 
     fun onName_medInput(input: String){

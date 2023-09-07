@@ -10,6 +10,8 @@ interface FormularioRemoteDataSource {
 
     suspend fun create(formulario: Formulario, file: File): Response<Formulario>
     suspend fun getFormulario(): Response<List<Formulario>>
+    suspend fun findReady(estado: String): Response<List<Formulario>>
+    suspend fun findNotReady(estado: String): Response<List<Formulario>>
     suspend fun findByNum(num_documento: String): Response<List<Formulario>>
     suspend fun findByType(tipo_documento: String): Response<List<Formulario>>
     suspend fun findByTypeAndNum(tipo_documento: String, num_documento: String): Response<List<Formulario>>

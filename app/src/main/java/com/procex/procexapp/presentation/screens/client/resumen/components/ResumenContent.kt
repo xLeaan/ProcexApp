@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.procex.procexapp.domain.model.Formulario
+import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioPendienteViewModel
 import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioResumenViewModel
 import com.procex.procexapp.presentation.ui.Blue200
 import com.procex.procexapp.presentation.ui.Pink80
@@ -93,7 +94,7 @@ fun ResumenContent(
                     )
 
                     drawRect(
-                        color = androidx.compose.ui.graphics.Color.Red, // Cambia el color si lo deseas
+                        color = androidx.compose.ui.graphics.Color.Red,
                         topLeft = Offset(anchoEfectivas, 0f),
                         size = Size(anchoNoEfectivas, size.height)
                     )

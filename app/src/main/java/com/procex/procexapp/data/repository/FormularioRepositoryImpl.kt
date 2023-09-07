@@ -124,7 +124,13 @@ class FormularioRepositoryImpl(
         }
     }.flowOn(Dispatchers.IO)
 
+    override fun findReady(estado: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findReady(estado)))
+    }
 
+    override fun findNotReady(estado: String): Flow<Resource<List<Formulario>>> = flow {
+        emit(ResponseToRequest.send(remoteDataSource.findNotReady(estado)))
+    }
 
     override fun findByNum(num_documento: String): Flow<Resource<List<Formulario>>> = flow {
         emit(ResponseToRequest.send(remoteDataSource.findByNum(num_documento)))
@@ -169,6 +175,7 @@ class FormularioRepositoryImpl(
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
+                        estado = this.data.estado,
                         name_med = this.data.name_med,
                         name = this.data.name,
                         tipo_documento = this.data.tipo_documento,
@@ -215,6 +222,7 @@ class FormularioRepositoryImpl(
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
+                        estado = this.data.estado,
                         name_med = this.data.name_med,
                         name = this.data.name,
                         tipo_documento = this.data.tipo_documento,

@@ -6,5 +6,6 @@ sealed class ClientFormularioScreen(val route: String) {
     object FormularioUpdate : ClientFormularioScreen("client/formulario/update/{formulario}") {
         fun passFormulario(formulario: String) = "client/formulario/update/$formulario"
     }
+    object FormularioPendiente : ClientFormularioScreen("client/formulario/pendiente")
 }
 

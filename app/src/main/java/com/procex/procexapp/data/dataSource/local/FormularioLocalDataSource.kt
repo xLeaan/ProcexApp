@@ -10,12 +10,14 @@ interface FormularioLocalDataSource {
     suspend fun create(formulario: FormularioEntity)
     suspend fun insertAll(formulario: List<FormularioEntity>)
     fun getFormulario(): Flow<List<FormularioEntity>>
-
+    fun findReady(estado: String): Flow<List<FormularioEntity>>
+    fun findNotReady(estado: String): Flow<List<FormularioEntity>>
     fun getFormularioByNum(num_documento: String): LiveData<FormularioEntity>
     fun getFormularioByType(tipo_documento: String): Flow<List<FormularioEntity>>
     fun getFormularioByTypeAndNum(tipo_documento: String, numero_documento: String): LiveData<FormularioEntity>
     suspend fun update(
         id: String,
+        estado: String,
         name_med: String,
         name: String,
         tipo_documento: String,

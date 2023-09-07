@@ -13,7 +13,7 @@ import com.procex.procexapp.presentation.screens.client.list.ClientFormularioLis
 
 
 @Composable
-fun GetFormulario(
+fun GetFormularioReady(
     navController: NavHostController,
     paddingValues: PaddingValues,
     vm: ClientFormularioListViewModel = hiltViewModel()

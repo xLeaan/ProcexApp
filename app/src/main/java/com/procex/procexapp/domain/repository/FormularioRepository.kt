@@ -9,6 +9,8 @@ interface FormularioRepository {
 
     suspend fun create(formulario: Formulario, file: File): Resource<Formulario>
     fun getFormulario(): Flow<Resource<List<Formulario>>>
+    fun findReady(estado: String): Flow<Resource<List<Formulario>>>
+    fun findNotReady(estado: String): Flow<Resource<List<Formulario>>>
     fun findByNum(num_documento: String): Flow<Resource<List<Formulario>>>
     fun findByType(tipo_documento: String): Flow<Resource<List<Formulario>>>
     fun findByTypeAndNum(tipo_documento: String, num_documento: String): Flow<Resource<List<Formulario>>>

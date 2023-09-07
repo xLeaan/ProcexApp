@@ -46,6 +46,7 @@ class ClientFormularioUpdateViewModel @Inject constructor(
 
     init {
         state = state.copy(
+            estado = formulario.estado,
             name_med = formulario.name_med,
             name = formulario.name,
             tipo_documento = formulario.tipo_documento,
@@ -122,6 +123,10 @@ class ClientFormularioUpdateViewModel @Inject constructor(
             state = state.copy(image = ComposeFileProvider.getPathFromBitmap(context, result))
             file = File(state.image)
         }
+    }
+
+    fun onEstadoInput(input: String){
+        state = state.copy(estado = input)
     }
 
     fun onName_medInput(input: String){

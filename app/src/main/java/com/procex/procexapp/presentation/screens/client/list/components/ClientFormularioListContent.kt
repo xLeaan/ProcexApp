@@ -30,7 +30,7 @@ fun ClientFormularioListContent(
     ) {
         item {
             Text(
-                text = "La cantidad de formularios son: $formularioCount",
+                text = "La cantidad de formularios listos son: $formularioCount",
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
                 modifier = Modifier.padding(16.dp)

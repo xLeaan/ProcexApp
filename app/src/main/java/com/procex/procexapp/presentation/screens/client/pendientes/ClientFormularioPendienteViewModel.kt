@@ -1,20 +1,19 @@
-package com.procex.procexapp.presentation.screens.client.list
+package com.procex.procexapp.presentation.screens.client.resumen
 
-import android.util.Log
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.*
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.domain.useCase.formulario.FormularioUseCase
 import com.procex.procexapp.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientFormularioListViewModel @Inject constructor(private val formularioUseCase: FormularioUseCase) : ViewModel() {
+class ClientFormularioPendienteViewModel @Inject constructor(private val formularioUseCase: FormularioUseCase): ViewModel() {
 
     var formularioResponse by mutableStateOf<Resource<List<Formulario>>?>(null)
         private set
@@ -26,13 +25,13 @@ class ClientFormularioListViewModel @Inject constructor(private val formularioUs
 
 
     init {
-        getFormulario()
-
+        findNotReady()
     }
 
-    fun findReady() = viewModelScope.launch {
+
+    fun findNotReady() = viewModelScope.launch {
         formularioResponse = Resource.Loading
-        formularioUseCase.findReady(estado = String()).collect { data ->
+        formularioUseCase.findNotReady(estado = String()).collect { data ->
             formularioResponse = data
         }
     }
@@ -81,4 +80,5 @@ class ClientFormularioListViewModel @Inject constructor(private val formularioUs
     fun onTipoDocumentoInput(value: String) {
         tipoDocumento = value
     }
+
 }

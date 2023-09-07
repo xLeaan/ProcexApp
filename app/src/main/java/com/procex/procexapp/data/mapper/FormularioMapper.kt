@@ -6,6 +6,7 @@ import com.procex.procexapp.domain.model.Formulario
 fun FormularioEntity.toFormulario(): Formulario{
     return Formulario(
         id = id,
+        estado = estado,
         name_med = name_med,
         name = name,
         tipo_documento = tipo_documento,
@@ -38,6 +39,7 @@ fun FormularioEntity.toFormulario(): Formulario{
 fun Formulario.toFormularioEntity(): FormularioEntity {
     return FormularioEntity(
         id = id ?: "",
+        estado = estado,
         name_med = name_med,
         name = name,
         tipo_documento = tipo_documento,

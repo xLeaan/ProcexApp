@@ -19,13 +19,12 @@ import androidx.navigation.NavHostController
 import com.procex.procexapp.presentation.components.DefaultSearchView
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.screens.client.list.components.GetFormulario
+import com.procex.procexapp.presentation.screens.client.list.components.GetFormularioReady
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientFormularioListScreen(navController: NavHostController, vm: ClientFormularioListViewModel = hiltViewModel()) {
-
-    vm.getFormulario()
 
     Scaffold(
         topBar = {

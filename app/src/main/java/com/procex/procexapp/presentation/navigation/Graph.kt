@@ -12,4 +12,5 @@ object Graph {
     const val PROFILE = "profile_graph"
     const val RESUMEN = "resumen_graph"
     const val INFO = "info_graph"
+    const val LISTO = "listo_graph"
 }

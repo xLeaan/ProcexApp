@@ -17,13 +17,13 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.presentation.navigation.screen.client.ClientFormularioScreen
+import com.procex.procexapp.presentation.navigation.screen.client.PendienteScreen
 
 @Composable
 fun ClientFormularioListItem(
     navController: NavHostController,
     formulario: Formulario,
 ) {
-
     Spacer(modifier = Modifier.height(15.dp))
     Card(
         modifier = Modifier
