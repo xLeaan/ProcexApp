@@ -36,6 +36,12 @@ class ClientFormularioResumenViewModel @Inject constructor(private val formulari
     var countFormulariosNE by mutableStateOf(0)
         private set
 
+    var countFormulariosPendientes by mutableStateOf(0)
+        private set
+
+    var countFormulariosListos by mutableStateOf(0)
+        private set
+
     init {
         getVisitas()
         getFormularioMes1()
@@ -44,12 +50,40 @@ class ClientFormularioResumenViewModel @Inject constructor(private val formulari
         findBySexoM()
         findVisitasEfectivas()
         findVisitasNoEfectivas()
+        getFormulariosListos()
+        getFormulariosPendientes()
     }
 
     fun getVisitas() = viewModelScope.launch {
         formularioRespone = Resource.Loading
         formularioUseCase.getFormulario().collect { data ->
             formularioRespone = data
+        }
+    }
+
+    fun getFormulariosListos() = viewModelScope.launch {
+        formularioRespone = Resource.Loading
+        formularioUseCase.findReady(estado = String()).collect { data ->
+            formularioRespone = data
+
+            if (data is Resource.Success) {
+                countFormulariosListos = data.data.size
+            } else {
+                countFormulariosListos = 0
+            }
+        }
+    }
+
+    fun getFormulariosPendientes() = viewModelScope.launch {
+        formularioRespone = Resource.Loading
+        formularioUseCase.findNotReady(estado = String()).collect { data ->
+            formularioRespone = data
+
+            if (data is Resource.Success) {
+                countFormulariosPendientes = data.data.size
+            } else {
+                countFormulariosPendientes = 0
+            }
         }
     }
 
