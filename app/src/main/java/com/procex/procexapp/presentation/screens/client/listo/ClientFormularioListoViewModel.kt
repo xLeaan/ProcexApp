@@ -1,4 +1,4 @@
-package com.procex.procexapp.presentation.screens.client.pendientes
+package com.procex.procexapp.presentation.screens.client.resumen
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.*
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientFormularioPendienteViewModel @Inject constructor(private val formularioUseCase: FormularioUseCase): ViewModel() {
+class ClientFormularioListoViewModel @Inject constructor(private val formularioUseCase: FormularioUseCase): ViewModel() {
 
     var formularioResponse by mutableStateOf<Resource<List<Formulario>>?>(null)
         private set
@@ -25,13 +25,13 @@ class ClientFormularioPendienteViewModel @Inject constructor(private val formula
 
 
     init {
-        findNotReady()
+        findReady()
     }
 
 
-    fun findNotReady() = viewModelScope.launch {
+    fun findReady() = viewModelScope.launch {
         formularioResponse = Resource.Loading
-        formularioUseCase.findNotReady(estado = String()).collect { data ->
+        formularioUseCase.findReady(estado = String()).collect { data ->
             formularioResponse = data
         }
     }

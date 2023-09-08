@@ -23,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.procex.procexapp.domain.model.Formulario
-import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioPendienteViewModel
 import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioResumenViewModel
 import com.procex.procexapp.presentation.ui.Blue200
 import com.procex.procexapp.presentation.ui.Pink80

@@ -26,7 +26,7 @@ import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.presentation.navigation.screen.client.ClientFormularioScreen
 
 @Composable
-fun ClientPendienteItem(navController: NavHostController,
+fun ClientListoItem(navController: NavHostController,
                         formulario: Formulario) {
     Column(
         Modifier

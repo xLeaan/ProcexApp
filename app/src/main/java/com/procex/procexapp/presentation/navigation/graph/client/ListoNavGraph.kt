@@ -7,23 +7,19 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.procex.procexapp.presentation.navigation.Graph
-import com.procex.procexapp.presentation.navigation.screen.client.ClientFormularioScreen
 import com.procex.procexapp.presentation.navigation.screen.client.InfoScreen
+import com.procex.procexapp.presentation.navigation.screen.client.ListoScreen
 import com.procex.procexapp.presentation.navigation.screen.client.PendienteScreen
-import com.procex.procexapp.presentation.screens.client.formulario.create.ClientFormularioCreateScreen
-import com.procex.procexapp.presentation.screens.client.info.InfoScreen
+import com.procex.procexapp.presentation.navigation.screen.client.ResumenScreen
 import com.procex.procexapp.presentation.screens.profile.update.ProfileUpdateScreen
 
-fun NavGraphBuilder.InfoNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.ListoNavGraph(navController: NavHostController) {
     navigation(
-        route = Graph.INFO,
-        startDestination = ClientFormularioScreen.Info.route
+        route = Graph.LISTO,
+        startDestination = ListoScreen.ListoUpdate.route
     ) {
-        composable(route = ClientFormularioScreen.Info.route){
-            InfoScreen(navController)
-        }
         composable(
-            route = InfoScreen.InfoUpdate.route,
+            route = ListoScreen.ListoUpdate.route,
             arguments = listOf(navArgument("user") {
                 type = NavType.StringType
             })

@@ -1,6 +1,5 @@
-package com.procex.procexapp.presentation.screens.client.list.components
+package com.procex.procexapp.presentation.screens.client.pendientes.components
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -10,20 +9,21 @@ import androidx.navigation.NavHostController
 import com.procex.procexapp.domain.util.Resource
 import com.procex.procexapp.presentation.components.ProgressBar
 import com.procex.procexapp.presentation.screens.client.list.ClientFormularioListViewModel
-
+import com.procex.procexapp.presentation.screens.client.list.components.ClientFormularioListContent
+import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioListoViewModel
+import com.procex.procexapp.presentation.screens.client.resumen.components.ListoContent
 
 @Composable
-fun GetFormularioReady(
-    navController: NavHostController,
-    paddingValues: PaddingValues,
-    vm: ClientFormularioListViewModel = hiltViewModel()
+fun GetListo(navController: NavHostController,
+             paddingValues: PaddingValues,
+             vm: ClientFormularioListoViewModel = hiltViewModel()
 ) {
     when (val response = vm.formularioResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
         is Resource.Success -> {
-            ClientFormularioListContent(
+            ListoContent(
                 paddingValues,
                 navController,
                 formulario = response.data
@@ -39,5 +39,3 @@ fun GetFormularioReady(
         }
     }
 }
-
-

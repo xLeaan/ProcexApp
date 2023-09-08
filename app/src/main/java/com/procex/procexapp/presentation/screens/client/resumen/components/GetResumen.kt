@@ -7,7 +7,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.procex.procexapp.domain.util.Resource
 import com.procex.procexapp.presentation.components.ProgressBar
-import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioPendienteViewModel
 import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioResumenViewModel
 
 @Composable

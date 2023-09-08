@@ -12,14 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.procex.procexapp.presentation.components.DefaultSearchView
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.screens.client.list.components.GetFormulario
-import com.procex.procexapp.presentation.screens.client.list.components.GetFormularioReady
 
 
 @OptIn(ExperimentalMaterial3Api::class)

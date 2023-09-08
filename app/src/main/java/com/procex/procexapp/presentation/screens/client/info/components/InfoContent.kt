@@ -48,11 +48,11 @@ import com.procex.procexapp.presentation.ui.Blue500
 import com.procex.procexapp.presentation.ui.Red200
 
 @Composable
-fun InfoContent(paddingValues: PaddingValues, navController:NavHostController, vm: ProfileViewModel = hiltViewModel()) {
+fun InfoContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel()) {
     Box(
         modifier = Modifier
             .padding(paddingValues = paddingValues)
-            .padding(bottom = 55.dp)
+            .padding(bottom = 2.dp)
     ) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -88,7 +88,7 @@ fun InfoContent(paddingValues: PaddingValues, navController:NavHostController, v
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(
-                    topEnd = 40.dp,
+                    topEnd = 60.dp,
                     topStart = 40.dp
                 ),
                 backgroundColor = Color.White.copy(alpha = 0.7f)
@@ -100,7 +100,7 @@ fun InfoContent(paddingValues: PaddingValues, navController:NavHostController, v
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 15.dp),
+                            .padding(top = 10.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(
@@ -148,7 +148,6 @@ fun InfoContent(paddingValues: PaddingValues, navController:NavHostController, v
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(20.dp))
 
                 }
             }

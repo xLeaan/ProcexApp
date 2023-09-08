@@ -11,6 +11,7 @@ object Graph {
     const val CLIENT_FORMULARIO = "client_formulario_graph"
     const val PROFILE = "profile_graph"
     const val RESUMEN = "resumen_graph"
+    const val PENDIENTE = "pendiente_graph"
     const val INFO = "info_graph"
     const val LISTO = "listo_graph"
 }

@@ -8,8 +8,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.procex.procexapp.domain.util.Resource
 import com.procex.procexapp.presentation.components.ProgressBar
-import com.procex.procexapp.presentation.screens.client.list.components.ClientFormularioListContent
-import com.procex.procexapp.presentation.screens.client.resumen.ClientFormularioPendienteViewModel
+import com.procex.procexapp.presentation.screens.client.pendientes.ClientFormularioPendienteViewModel
 import com.procex.procexapp.presentation.screens.client.resumen.components.PendienteContent
 
 @Composable

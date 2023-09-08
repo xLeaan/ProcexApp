@@ -3,6 +3,8 @@ package com.procex.procexapp.presentation.navigation.screen.client
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
@@ -20,20 +22,20 @@ sealed class ClientScreen(
         title = "Form.",
         icon = Icons.Default.List
     )
-    object Resumen: ClientScreen(
-        route = "client/resumen",
-        title = "Resmn.",
-        icon = Icons.Default.Face
+    object Listo: ClientScreen(
+        route = "client/listo",
+        title = "Listo",
+        icon = Icons.Default.CheckCircle
     )
     object Pendiente: ClientScreen(
         route = "client/pendiente",
         title = "Nv.",
         icon = Icons.Default.AddCircle
     )
-    object Info: ClientScreen(
-        route = "client/informacion",
-        title = "Info",
-        icon = Icons.Default.Info
+    object Resumen: ClientScreen(
+        route = "client/resumen",
+        title = "Resmn.",
+        icon = Icons.Default.Face
     )
     object Perfil: ClientScreen(
         route = "client/profile",
