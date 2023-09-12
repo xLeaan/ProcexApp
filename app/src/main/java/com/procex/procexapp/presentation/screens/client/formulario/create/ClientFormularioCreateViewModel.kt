@@ -216,7 +216,7 @@ class ClientFormularioCreateViewModel @Inject constructor(
             return false
         }
         if (state.name_med == "" && state.estado == "Listo") {
-            Toast.makeText(context, "Debe ingresar el nombre del médico", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Debe ingresar el nombre del promotor", Toast.LENGTH_SHORT).show()
             return false
         }
         if (state.RH == "" && state.estado == "Listo") {
