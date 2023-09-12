@@ -251,11 +251,7 @@ class ClientFormularioCreateViewModel @Inject constructor(
             Toast.makeText(context, "La califiación de la visita no puede estar vacío", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.toma_ta == "" && state.estado == "Listo") {
-            Toast.makeText(context, "La toma TA no puede estar vacío", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if (state.toma_ta == "" && state.estado == "Listo") {
+        if (state.tensiona == "" && state.estado == "Listo") {
             Toast.makeText(context, "La toma TA no puede estar vacío", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -279,6 +275,30 @@ class ClientFormularioCreateViewModel @Inject constructor(
             Toast.makeText(
                 context,
                 "Ingrese dirección para formulario pendiente",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.direccion == "" && state.estado == "Listo") {
+            Toast.makeText(
+                context,
+                "Ingrese una dirección",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.barrio == "" && state.estado == "Pendiente") {
+            Toast.makeText(
+                context,
+                "Ingrese un barrio",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.barrio == "" && state.estado == "Listo") {
+            Toast.makeText(
+                context,
+                "Ingrese un barrio",
                 Toast.LENGTH_SHORT
             ).show()
             return false
