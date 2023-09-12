@@ -56,8 +56,14 @@ fun ClientPendienteItem(navController: NavHostController,
                     color = Color.Gray,
                     fontSize = 14.sp
                 )
+                Spacer(modifier = Modifier.height(5.dp))
+                androidx.compose.material3.Text(
+                    text = formulario.direccion,
+                    color = Color.Gray,
+                    fontSize = 14.sp
+                )
             }
-            Spacer(modifier = Modifier.width(15.dp))
+            Spacer(modifier = Modifier.width(25.dp))
             Column(
                 verticalArrangement = Arrangement.Center
             ) {

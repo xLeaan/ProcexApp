@@ -42,13 +42,13 @@ class ClientFormularioCreateViewModel @Inject constructor(
     val resultingActivityHandler = ResultingActivityHandler()
 
     fun createFormulario() = viewModelScope.launch {
-        if (isValid() && file != null ) {
-            formularioResponse = Resource.Loading
-            val result = formularioUseCase.createFormulario(state.toFormulario(), file!!)
-            formularioResponse = result
-        } else if (file === null) {
-            Toast.makeText(context, "Es necesario una imagen para cargar el formulario", Toast.LENGTH_SHORT).show()
-        }
+            if (isValid() && file != null ) {
+                formularioResponse = Resource.Loading
+                val result = formularioUseCase.createFormulario(state.toFormulario(), file!!)
+                formularioResponse = result
+            } else if (file === null) {
+                Toast.makeText(context, "Es necesario una imagen para cargar el formulario", Toast.LENGTH_SHORT).show()
+            }
     }
 
 
@@ -211,47 +211,80 @@ class ClientFormularioCreateViewModel @Inject constructor(
     }
 
     fun isValid(): Boolean {
-        if (state.telefono.length != 10) {
+        if (state.telefono.length != 10 && state.estado == "Listo") {
             Toast.makeText(context, "El télefono no es válido", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.name_med == "") {
+        if (state.name_med == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el nombre del médico", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.RH == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Debe ingresar un RH", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_visita == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese tipo de visita", Toast.LENGTH_SHORT).show()
             return false
         }
         if (state.name == "") {
             Toast.makeText(context, "Debe ingresar el nombre del paciente", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.tipo_documento == "") {
+        if (state.tipo_documento == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el tipo de documento", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.num_documento == "") {
+        if (state.num_documento == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el numero de documento", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.fecha == "") {
+        if (state.fecha == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar una fecha de nacimiento", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.sexo == "") {
+        if (state.sexo == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el género del paciente", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.cl_visita == "No efectiva" && state.causa == "") {
-            Toast.makeText(context, "Si la visita no fue efectiva debe ingresar la causa", Toast.LENGTH_SHORT).show()
+        if (state.cl_visita == "" && state.estado == "Listo") {
+            Toast.makeText(context, "La califiación de la visita no puede estar vacío", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "" && state.resultado_ta == "") {
+        if (state.toma_ta == "" && state.estado == "Listo") {
+            Toast.makeText(context, "La toma TA no puede estar vacío", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.toma_ta == "" && state.estado == "Listo") {
+            Toast.makeText(context, "La toma TA no puede estar vacío", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.oximetria == "" && state.estado == "Listo") {
+            Toast.makeText(context, "El campo de oximetria no puede estar vacío", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "" && state.resultado_ta == "" && state.estado == "Listo") {
             Toast.makeText(context, "Si el paciente tiene TA debe marcar el tipo, toma y resultado", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.oximetria == "Sí" && state.toma_oxi == "" && state.resultado_oxi == "") {
+        if (state.oximetria == "Sí" && state.toma_oxi == "" && state.resultado_oxi == "" && state.estado == "Listo") {
             Toast.makeText(context, "Si marca oximentria debe marcar una fecha de toma y resultado", Toast.LENGTH_SHORT).show()
             return false
         }
-        return true
+        if (state.estatura > "250" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese una estatura válida", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.direccion == "" && state.estado == "Pendiente") {
+            Toast.makeText(
+                context,
+                "Ingrese dirección para formulario pendiente",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+            return true
     }
+
 
 }
