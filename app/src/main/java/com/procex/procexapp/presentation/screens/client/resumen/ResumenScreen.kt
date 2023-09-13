@@ -16,18 +16,26 @@ import com.procex.procexapp.domain.model.Formulario
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.screens.client.pendientes.components.GetListo
 import com.procex.procexapp.presentation.screens.client.resumen.components.GetResumen
+import com.procex.procexapp.presentation.ui.Blue200
+import com.procex.procexapp.presentation.ui.Gray200
+import com.procex.procexapp.presentation.ui.Green10
+import com.procex.procexapp.presentation.ui.Green40
+import com.procex.procexapp.presentation.ui.Purple40
+import com.procex.procexapp.presentation.ui.Red100
+import com.procex.procexapp.presentation.ui.Red200
 
 @Composable
 fun ResumenScreen(navController: NavHostController, formulario: List<Formulario>){
     Scaffold(floatingActionButton = {
         FloatingActionButton(
             modifier = Modifier.padding(bottom = 60.dp),
-            onClick = { navController.navigate(route = Graph.INFO) }
+            onClick = { navController.navigate(route = Graph.INFO) },
+            backgroundColor = Gray200
         ) {
             Icon(
                 imageVector = Icons.Default.Info,
                 contentDescription = "",
-                tint = Color.Blue
+                tint = Red100
             )
         }
     }){paddingValues ->
