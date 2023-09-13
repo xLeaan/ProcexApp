@@ -211,6 +211,10 @@ class ClientFormularioCreateViewModel @Inject constructor(
     }
 
     fun isValid(): Boolean {
+        if (state.estado == ""){
+            Toast.makeText(context, "Debe seleccionar el estado del formulario", Toast.LENGTH_SHORT).show()
+            return false
+        }
         if (state.telefono.length != 10 && state.estado == "Listo") {
             Toast.makeText(context, "El télefono no es válido", Toast.LENGTH_SHORT).show()
             return false

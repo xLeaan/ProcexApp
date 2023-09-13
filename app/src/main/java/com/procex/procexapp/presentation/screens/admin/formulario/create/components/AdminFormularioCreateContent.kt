@@ -63,8 +63,8 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
     vm.resultingActivityHandler.handle()
     val stateDialog = remember { mutableStateOf(false) }
 
-    val opcionesConsulta = listOf("Medicina general", "Odontología")
-    var consultaExpanded by remember { mutableStateOf(false) }
+    val opcionesEstado = listOf("Listo", "Pendiente")
+    var estadoExpanded by remember { mutableStateOf(false) }
 
     val opcionesSexo = listOf("Femenino", "Masculino")
     var sexoExpanded by remember { mutableStateOf(false) }
@@ -84,12 +84,32 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
     val opcionesPropiedad = listOf("Sí", "No")
     var propiedadExpanded by remember { mutableStateOf(false) }
 
+    val opcionesTensiona = listOf("Sí", "No")
+    var tensionaExpanded by remember { mutableStateOf(false) }
+
+    val opcionesOximetria = listOf("Sí", "No")
+    var oximetriaExpanded by remember { mutableStateOf(false) }
+
+    val opcionesFindrisk = listOf("Sí", "No")
+    var findriskExpanded by remember { mutableStateOf(false) }
+
     val opcionesTA = listOf("Sistólica", "Diastólica")
     var TAExpanded by remember { mutableStateOf(false) }
 
-    val selectedDate = remember { mutableStateOf(Calendar.getInstance()) }
     val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+    val selectedDate = remember { mutableStateOf(Calendar.getInstance()) }
     val formattedDate = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateToma_ta = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateResultado_ta = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateToma_oxi = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+    val formattedDateResultado_oxi = remember { mutableStateOf(dateFormat.format(selectedDate.value.time)) }
+
+
 
     val context = LocalContext.current
 
@@ -133,6 +153,40 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                 .padding(20.dp)
                 .verticalScroll(rememberScrollState())
         ) {
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.estado,
+                    onValueChange = { vm.onEstadoInput(it) },
+                    label = { Text("Estado de formulario") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir estado",
+                            modifier = Modifier.clickable { estadoExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = estadoExpanded,
+                    onDismissRequest = { estadoExpanded = false }
+                ) {
+                    opcionesEstado.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onEstadoInput(option)
+                                estadoExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = state.name_med,
@@ -259,15 +313,15 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                 modifier = Modifier.fillMaxWidth(),
                 value = formattedDate.value,
                 onValueChange = {  },
-                label = { Text("Fecha") },
+                label = { Text("Fecha de nacimiento") },
                 trailingIcon = {
-                    Icon(Icons.Default.DateRange, contentDescription = "Fecha")
+                    Icon(Icons.Default.DateRange, contentDescription = "Fecha de nacimiento")
                 }
             )
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    val datePicker = DatePickerDialog(
+                    val fecha_nacimiento = DatePickerDialog(
                         context,
                         { _, year, month, dayOfMonth ->
                             vm.onFechaInput(year, month, dayOfMonth)
@@ -279,7 +333,7 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                         selectedDate.value.get(Calendar.MONTH),
                         selectedDate.value.get(Calendar.DAY_OF_MONTH)
                     )
-                    datePicker.show()
+                    fecha_nacimiento.show()
                 }
             ) {
                 Text("Seleccionar fecha")
@@ -362,7 +416,7 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                 modifier = Modifier.fillMaxWidth(),
                 value = state.causa,
                 onValueChange = { vm.onCausaInput(it) },
-                label = "Causa de no efectividad(opcional)",
+                label = "Causa de no efectividad(solo si la visita es no efectiva)",
                 icon = Icons.Default.Close
             )
             DefaultTextField(
@@ -425,19 +479,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                         Icon(
                             imageVector = Icons.Default.ArrowDropDown,
                             contentDescription = "Expandir TA",
-                            modifier = Modifier.clickable { propiedadExpanded = true }
+                            modifier = Modifier.clickable { tensionaExpanded = true }
                         )
                     }
                 )
                 DropdownMenu(
-                    expanded = propiedadExpanded,
-                    onDismissRequest = { propiedadExpanded = false }
+                    expanded = tensionaExpanded,
+                    onDismissRequest = { tensionaExpanded = false }
                 ) {
-                    opcionesPropiedad.forEach { option ->
+                    opcionesTensiona.forEach { option ->
                         DropdownMenuItem(
                             onClick = {
                                 vm.onTensionaInput(option)
-                                propiedadExpanded = false
+                                tensionaExpanded = false
                             }
                         ) {
                             Text(text = option)
@@ -445,6 +499,7 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                     }
                 }
             }
+            Text(text = "Si la respuesta es No, no debe cambiar las fechas siguientes")
             Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
@@ -481,7 +536,7 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Spacer(modifier = Modifier.height(5.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = formattedDate.value,
+                value = formattedDateToma_ta.value,
                 onValueChange = {  },
                 label = { Text("Fecha toma TA") },
                 trailingIcon = {
@@ -491,19 +546,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    val datePicker = DatePickerDialog(
+                    val toma_ta = DatePickerDialog(
                         context,
                         { _, year, month, dayOfMonth ->
                             vm.onToma_taInput(year, month, dayOfMonth)
                             val selectedCalendar = Calendar.getInstance()
                             selectedCalendar.set(year, month, dayOfMonth)
-                            formattedDate.value = dateFormat.format(selectedCalendar.time)
+                            formattedDateToma_ta.value = dateFormat.format(selectedCalendar.time)
                         },
                         selectedDate.value.get(Calendar.YEAR),
                         selectedDate.value.get(Calendar.MONTH),
                         selectedDate.value.get(Calendar.DAY_OF_MONTH)
                     )
-                    datePicker.show()
+                    toma_ta.show()
                 }
             ) {
                 Text("Fecha toma TA")
@@ -511,7 +566,7 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Spacer(modifier = Modifier.height(5.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = formattedDate.value,
+                value = formattedDateResultado_ta.value,
                 onValueChange = {  },
                 label = { Text("Fecha resultado TA") },
                 trailingIcon = {
@@ -521,19 +576,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    val datePicker = DatePickerDialog(
+                    val resultado_ta = DatePickerDialog(
                         context,
                         { _, year, month, dayOfMonth ->
                             vm.onResultado_taInput(year, month, dayOfMonth)
                             val selectedCalendar = Calendar.getInstance()
                             selectedCalendar.set(year, month, dayOfMonth)
-                            formattedDate.value = dateFormat.format(selectedCalendar.time)
+                            formattedDateResultado_ta.value = dateFormat.format(selectedCalendar.time)
                         },
                         selectedDate.value.get(Calendar.YEAR),
                         selectedDate.value.get(Calendar.MONTH),
                         selectedDate.value.get(Calendar.DAY_OF_MONTH)
                     )
-                    datePicker.show()
+                    resultado_ta.show()
                 }
             ) {
                 Text("Fecha resultado TA")
@@ -551,19 +606,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                         Icon(
                             imageVector = Icons.Default.ArrowDropDown,
                             contentDescription = "Expandir",
-                            modifier = Modifier.clickable { propiedadExpanded = true }
+                            modifier = Modifier.clickable { oximetriaExpanded = true }
                         )
                     }
                 )
                 DropdownMenu(
-                    expanded = propiedadExpanded,
-                    onDismissRequest = { propiedadExpanded = false }
+                    expanded = oximetriaExpanded,
+                    onDismissRequest = { oximetriaExpanded = false }
                 ) {
-                    opcionesPropiedad.forEach { option ->
+                    opcionesOximetria.forEach { option ->
                         DropdownMenuItem(
                             onClick = {
                                 vm.onOximetriaInput(option)
-                                propiedadExpanded = false
+                                oximetriaExpanded = false
                             }
                         ) {
                             Text(text = option)
@@ -571,10 +626,11 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                     }
                 }
             }
+            Text(text = "Si la respuesta es No, no debe cambiar las fechas siguientes")
             Spacer(modifier = Modifier.height(5.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = formattedDate.value,
+                value = formattedDateToma_oxi.value,
                 onValueChange = {  },
                 label = { Text("Fecha toma Oximetría") },
                 trailingIcon = {
@@ -584,19 +640,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    val datePicker = DatePickerDialog(
+                    val toma_oxi = DatePickerDialog(
                         context,
                         { _, year, month, dayOfMonth ->
                             vm.onToma_oxiInput(year, month, dayOfMonth)
                             val selectedCalendar = Calendar.getInstance()
                             selectedCalendar.set(year, month, dayOfMonth)
-                            formattedDate.value = dateFormat.format(selectedCalendar.time)
+                            formattedDateToma_oxi.value = dateFormat.format(selectedCalendar.time)
                         },
                         selectedDate.value.get(Calendar.YEAR),
                         selectedDate.value.get(Calendar.MONTH),
                         selectedDate.value.get(Calendar.DAY_OF_MONTH)
                     )
-                    datePicker.show()
+                    toma_oxi.show()
                 }
             ) {
                 Text("Fecha toma Oximetría")
@@ -604,7 +660,7 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Spacer(modifier = Modifier.height(5.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = formattedDate.value,
+                value = formattedDateResultado_oxi.value,
                 onValueChange = {  },
                 label = { Text("Fecha resultado Oximetría") },
                 trailingIcon = {
@@ -614,19 +670,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    val datePicker = DatePickerDialog(
+                    val resultado_oxi = DatePickerDialog(
                         context,
                         { _, year, month, dayOfMonth ->
                             vm.onResultado_oxiInput(year, month, dayOfMonth)
                             val selectedCalendar = Calendar.getInstance()
                             selectedCalendar.set(year, month, dayOfMonth)
-                            formattedDate.value = dateFormat.format(selectedCalendar.time)
+                            formattedDateResultado_oxi.value = dateFormat.format(selectedCalendar.time)
                         },
                         selectedDate.value.get(Calendar.YEAR),
                         selectedDate.value.get(Calendar.MONTH),
                         selectedDate.value.get(Calendar.DAY_OF_MONTH)
                     )
-                    datePicker.show()
+                    resultado_oxi.show()
                 }
             ) {
                 Text("Fecha resultado Oximetría")
@@ -644,19 +700,19 @@ fun AdminFormularioCreateContent(paddingValues: PaddingValues,
                         Icon(
                             imageVector = Icons.Default.ArrowDropDown,
                             contentDescription = "Expandir",
-                            modifier = Modifier.clickable { propiedadExpanded = true }
+                            modifier = Modifier.clickable { findriskExpanded = true }
                         )
                     }
                 )
                 DropdownMenu(
-                    expanded = propiedadExpanded,
-                    onDismissRequest = { propiedadExpanded = false }
+                    expanded = findriskExpanded,
+                    onDismissRequest = { findriskExpanded = false }
                 ) {
-                    opcionesPropiedad.forEach { option ->
+                    opcionesFindrisk.forEach { option ->
                         DropdownMenuItem(
                             onClick = {
                                 vm.onFindriskInput(option)
-                                propiedadExpanded = false
+                                findriskExpanded = false
                             }
                         ) {
                             Text(text = option)
