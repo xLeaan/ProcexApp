@@ -63,7 +63,6 @@ class AdminFormularioUpdateViewModel @Inject constructor(
             tensiona = formulario.tensiona,
             tipo_ta = formulario.tipo_ta,
             toma_ta = formulario.toma_ta,
-            resultado_ta = formulario.resultado_ta,
             oximetria = formulario.oximetria,
             toma_oxi = formulario.toma_oxi,
             resultado_oxi = formulario.resultado_oxi,
@@ -192,23 +191,18 @@ class AdminFormularioUpdateViewModel @Inject constructor(
         state = state.copy(toma_ta = formattedDate)
     }
 
-    fun onResultado_taInput(year: Int, month: Int, dayOfMonth: Int) {
-        val formattedDate = "$dayOfMonth-${month + 1}-$year"
-        state = state.copy(resultado_ta = formattedDate)
-    }
-
     fun onOximetriaInput(input: String){
         state = state.copy(oximetria = input)
     }
 
     fun onToma_oxiInput(year: Int, month: Int, dayOfMonth: Int) {
         val formattedDate = "$dayOfMonth-${month + 1}-$year"
-        state = state.copy(resultado_ta = formattedDate)
+        state = state.copy(toma_ta = formattedDate)
     }
 
     fun onResultado_oxiInput(year: Int, month: Int, dayOfMonth: Int) {
         val formattedDate = "$dayOfMonth-${month + 1}-$year"
-        state = state.copy(resultado_ta = formattedDate)
+        state = state.copy(resultado_oxi = formattedDate)
     }
 
     fun onFindriskInput(input: String){
@@ -260,7 +254,7 @@ class AdminFormularioUpdateViewModel @Inject constructor(
             Toast.makeText(context, "Si la visita no fue efectiva debe ingresar la causa", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "" && state.resultado_ta == "") {
+        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "") {
             Toast.makeText(context, "Si el paciente tiene TA debe marcar el tipo, toma y resultado", Toast.LENGTH_SHORT).show()
             return false
         }

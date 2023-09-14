@@ -43,7 +43,6 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
         tensiona: String,
         tipo_ta: String,
         toma_ta: String,
-        resultado_ta: String,
         oximetria: String,
         toma_oxi: String,
         resultado_oxi: String,
@@ -53,7 +52,7 @@ class FormularioLocalDataSourceImpl(private val formularioDao: FormularioDao): F
         nota_uno: String,
         image: String
     ) = formularioDao.update(id, estado, name_med, name, tipo_documento, num_documento, sexo, RH, fecha, telefono, tipo_visita, cl_visita,
-        causa, direccion, barrio, propiedad, tensiona, tipo_ta, toma_ta, resultado_ta, oximetria, toma_oxi, resultado_oxi,
+        causa, direccion, barrio, propiedad, tensiona, tipo_ta, toma_ta, oximetria, toma_oxi, resultado_oxi,
         findrisk, estatura, peso, nota_uno, image)
 
 

@@ -35,7 +35,6 @@ interface FormularioLocalDataSource {
         tensiona: String,
         tipo_ta: String,
         toma_ta: String,
-        resultado_ta: String,
         oximetria: String,
         toma_oxi: String,
         resultado_oxi: String ,

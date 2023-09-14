@@ -1,7 +1,6 @@
 package com.procex.procexapp.presentation.screens.client.formulario.create
 
 data class ClientFormularioCreateState(
-    val consulta: String = "",
     val estado: String = "",
     val name_med: String = "",
     val name: String = "",
@@ -20,7 +19,6 @@ data class ClientFormularioCreateState(
     val tensiona: String = "",
     val tipo_ta: String = "",
     val toma_ta: String = "",
-    val resultado_ta: String = "",
     val oximetria: String = "",
     val toma_oxi: String = "",
     val resultado_oxi: String = "",

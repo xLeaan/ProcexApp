@@ -64,7 +64,6 @@ class ClientFormularioUpdateViewModel @Inject constructor(
             tensiona = formulario.tensiona,
             tipo_ta = formulario.tipo_ta,
             toma_ta = formulario.toma_ta,
-            resultado_ta = formulario.resultado_ta,
             oximetria = formulario.oximetria,
             toma_oxi = formulario.toma_oxi,
             resultado_oxi = formulario.resultado_oxi,
@@ -199,23 +198,18 @@ class ClientFormularioUpdateViewModel @Inject constructor(
         state = state.copy(toma_ta = formattedDate)
     }
 
-    fun onResultado_taInput(year: Int, month: Int, dayOfMonth: Int) {
-        val formattedDate = "$dayOfMonth-${month + 1}-$year"
-        state = state.copy(resultado_ta = formattedDate)
-    }
-
     fun onOximetriaInput(input: String){
         state = state.copy(oximetria = input)
     }
 
     fun onToma_oxiInput(year: Int, month: Int, dayOfMonth: Int) {
         val formattedDate = "$dayOfMonth-${month + 1}-$year"
-        state = state.copy(resultado_ta = formattedDate)
+        state = state.copy(toma_oxi = formattedDate)
     }
 
     fun onResultado_oxiInput(year: Int, month: Int, dayOfMonth: Int) {
         val formattedDate = "$dayOfMonth-${month + 1}-$year"
-        state = state.copy(resultado_ta = formattedDate)
+        state = state.copy(resultado_oxi = formattedDate)
     }
 
     fun onFindriskInput(input: String){

@@ -564,36 +564,6 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                 Text("Fecha toma TA")
             }
             Spacer(modifier = Modifier.height(5.dp))
-            TextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = formattedDateResultado_ta.value,
-                onValueChange = {  },
-                label = { Text("Fecha resultado TA") },
-                trailingIcon = {
-                    Icon(Icons.Default.DateRange, contentDescription = "Fecha resultado TA")
-                }
-            )
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    val resultado_ta = DatePickerDialog(
-                        context,
-                        { _, year, month, dayOfMonth ->
-                            vm.onResultado_taInput(year, month, dayOfMonth)
-                            val selectedCalendar = Calendar.getInstance()
-                            selectedCalendar.set(year, month, dayOfMonth)
-                            formattedDateResultado_ta.value = dateFormat.format(selectedCalendar.time)
-                        },
-                        selectedDate.value.get(Calendar.YEAR),
-                        selectedDate.value.get(Calendar.MONTH),
-                        selectedDate.value.get(Calendar.DAY_OF_MONTH)
-                    )
-                    resultado_ta.show()
-                }
-            ) {
-                Text("Fecha resultado TA")
-            }
-            Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
                     value = state.oximetria,

@@ -28,7 +28,6 @@ data class FormularioEntity(
     @ColumnInfo(name = "tensiona")var tensiona: String = "",
     @ColumnInfo(name = "tipo_ta")var tipo_ta: String = "",
     @ColumnInfo(name = "toma_ta")var toma_ta: String = "",
-    @ColumnInfo(name = "resultado_ta")var resultado_ta: String = "",
     @ColumnInfo(name = "oximetria")var oximetria: String = "",
     @ColumnInfo(name = "toma_oxi")var toma_oxi: String = "",
     @ColumnInfo(name = "resultado_oxi")var resultado_oxi: String = "",

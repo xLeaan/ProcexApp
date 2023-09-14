@@ -40,7 +40,7 @@ interface FormularioDao {
 
     @Query("UPDATE formulario SET estado = :estado, name_med = :name_med, name = :name, tipo_documento = :tipo_documento, num_documento = :num_documento, sexo = :sexo ,  RH = :RH, fecha = :fecha, telefono = :telefono, " +
             "tipo_visita = :tipo_visita, cl_visita = :cl_visita, causa = :causa, direccion = :direccion, barrio = :barrio, propiedad = :propiedad, tensiona = :tensiona, tipo_ta " +
-            " = :tipo_ta, toma_ta = :toma_ta, resultado_ta = :resultado_ta, oximetria = :oximetria, toma_oxi = :toma_oxi, resultado_oxi = :resultado_oxi, findrisk = :findrisk, estatura " +
+            " = :tipo_ta, toma_ta = :toma_ta, oximetria = :oximetria, toma_oxi = :toma_oxi, resultado_oxi = :resultado_oxi, findrisk = :findrisk, estatura " +
             " = :estatura, peso = :peso, nota_uno = :nota_uno, image = :image WHERE id = :id")
 
     suspend fun update(
@@ -63,7 +63,6 @@ interface FormularioDao {
         tensiona: String,
         tipo_ta: String,
         toma_ta: String,
-        resultado_ta: String,
         oximetria: String,
         toma_oxi: String,
         resultado_oxi: String ,

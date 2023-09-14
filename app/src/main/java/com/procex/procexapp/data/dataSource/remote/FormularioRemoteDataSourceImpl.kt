@@ -38,7 +38,6 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val tensionaData = formulario.tensiona.toRequestBody(contentType.toMediaTypeOrNull())
         val tipo_taData = formulario.tipo_ta.toRequestBody(contentType.toMediaTypeOrNull())
         val toma_taData = formulario.toma_ta.toRequestBody(contentType.toMediaTypeOrNull())
-        val resultado_taData = formulario.resultado_ta.toRequestBody(contentType.toMediaTypeOrNull())
         val oximetriaData = formulario.oximetria.toRequestBody(contentType.toMediaTypeOrNull())
         val toma_oxiData = formulario.toma_oxi.toRequestBody(contentType.toMediaTypeOrNull())
         val resultado_oxiData = formulario.resultado_oxi.toRequestBody(contentType.toMediaTypeOrNull())
@@ -48,7 +47,7 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val nota_unoData = formulario.nota_uno.toRequestBody(contentType.toMediaTypeOrNull())
 
         return formularioService.create(fileFormData, estadoData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
-            telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData, resultado_taData,
+            telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData,
         oximetriaData, toma_oxiData, resultado_oxiData, findriskData, estaturaData, pesoData, nota_unoData)
     }
 
@@ -113,7 +112,6 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val tensionaData = formulario.tensiona.toRequestBody(contentType.toMediaTypeOrNull())
         val tipo_taData = formulario.tipo_ta.toRequestBody(contentType.toMediaTypeOrNull())
         val toma_taData = formulario.toma_ta.toRequestBody(contentType.toMediaTypeOrNull())
-        val resultado_taData = formulario.resultado_ta.toRequestBody(contentType.toMediaTypeOrNull())
         val oximetriaData = formulario.oximetria.toRequestBody(contentType.toMediaTypeOrNull())
         val toma_oxiData = formulario.toma_oxi.toRequestBody(contentType.toMediaTypeOrNull())
         val resultado_oxiData = formulario.resultado_oxi.toRequestBody(contentType.toMediaTypeOrNull())
@@ -123,7 +121,7 @@ class FormularioRemoteDataSourceImpl(private val formularioService: FormularioSe
         val nota_unoData = formulario.nota_uno.toRequestBody(contentType.toMediaTypeOrNull())
 
         return formularioService.updateWithImage(fileFormData, id, estadoData, name_medData, nameData, tipo_documentoData, num_documentoData, sexoData, RHData, fechaData,
-            telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData, resultado_taData,
+            telefonoData, tipo_visitaData, cl_visitaData, causaData, direccionData, barrioData, propiedadData, tensionaData, tipo_taData, toma_taData,
             oximetriaData, toma_oxiData, resultado_oxiData, findriskData, estaturaData, pesoData, nota_unoData)
     }
 

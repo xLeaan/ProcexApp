@@ -23,7 +23,6 @@ fun AdminFormularioCreateState.toFormulario(): Formulario {
             tensiona = tensiona,
             tipo_ta = tipo_ta,
             toma_ta = toma_ta,
-            resultado_ta = resultado_ta,
             oximetria = oximetria,
             toma_oxi = toma_oxi,
             resultado_oxi = resultado_oxi,

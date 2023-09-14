@@ -19,7 +19,6 @@ data class AdminFormularioUpdateState(
     val tensiona: String = "",
     val tipo_ta: String = "",
     val toma_ta: String = "",
-    val resultado_ta: String = "",
     val oximetria: String = "",
     val toma_oxi: String = "",
     val resultado_oxi: String = "",
