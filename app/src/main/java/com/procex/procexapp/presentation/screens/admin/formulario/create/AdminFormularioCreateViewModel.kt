@@ -280,6 +280,10 @@ class AdminFormularioCreateViewModel @Inject constructor(
             Toast.makeText(context, "Ingrese el peso", Toast.LENGTH_SHORT).show()
             return false
         }
+        if (state.peso == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese el peso", Toast.LENGTH_SHORT).show()
+            return false
+        }
         if (state.direccion == "" && state.estado == "Listo") {
             Toast.makeText(
                 context,

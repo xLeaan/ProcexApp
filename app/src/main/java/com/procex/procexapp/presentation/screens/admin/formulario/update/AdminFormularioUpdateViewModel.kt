@@ -222,47 +222,216 @@ class AdminFormularioUpdateViewModel @Inject constructor(
     }
 
     fun isValid(): Boolean {
-        if (state.telefono.length != 10) {
+        if (state.estado == ""){
+            Toast.makeText(context, "Debe seleccionar el estado del formulario", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.telefono.length != 10 && state.estado == "Listo") {
             Toast.makeText(context, "El télefono no es válido", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.name_med == "") {
-            Toast.makeText(context, "Debe ingresar el nombre del médico", Toast.LENGTH_SHORT).show()
+        if (state.name_med == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Debe ingresar el nombre del promotor", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.RH == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Debe ingresar un RH", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_visita == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese tipo de visita", Toast.LENGTH_SHORT).show()
             return false
         }
         if (state.name == "") {
             Toast.makeText(context, "Debe ingresar el nombre del paciente", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.tipo_documento == "") {
+        if (state.tipo_documento == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el tipo de documento", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.num_documento == "") {
+        if (state.num_documento == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el numero de documento", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.fecha == "") {
+        if (state.fecha == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar una fecha de nacimiento", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.sexo == "") {
+        if (state.sexo == "" && state.estado == "Listo") {
             Toast.makeText(context, "Debe ingresar el género del paciente", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.cl_visita == "No efectiva" && state.causa == "") {
-            Toast.makeText(context, "Si la visita no fue efectiva debe ingresar la causa", Toast.LENGTH_SHORT).show()
+        if (state.cl_visita == "" && state.estado == "Listo") {
+            Toast.makeText(context, "La califiación de la visita no puede estar vacío", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "") {
+        if (state.tensiona == "" && state.estado == "Listo") {
+            Toast.makeText(context, "La toma TA no puede estar vacío", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.oximetria == "" && state.estado == "Listo") {
+            Toast.makeText(context, "El campo de oximetria no puede estar vacío", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tensiona == "Sí" && state.tipo_ta == "" && state.toma_ta == "" && state.estado == "Listo") {
             Toast.makeText(context, "Si el paciente tiene TA debe marcar el tipo, toma y resultado", Toast.LENGTH_SHORT).show()
             return false
         }
-        if (state.oximetria == "Sí" && state.toma_oxi == "" && state.resultado_oxi == "") {
+        if (state.oximetria == "Sí" && state.toma_oxi == "" && state.resultado_oxi == "" && state.estado == "Listo") {
             Toast.makeText(context, "Si marca oximentria debe marcar una fecha de toma y resultado", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.estatura > "250" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese una estatura válida", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.estatura == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese una estatura", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.direccion == "" && state.estado == "Pendiente") {
+            Toast.makeText(
+                context,
+                "Ingrese dirección para formulario pendiente",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.peso == "" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese el peso", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.peso < "300" && state.estado == "Listo") {
+            Toast.makeText(context, "Ingrese un peso válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.direccion == "" && state.estado == "Listo") {
+            Toast.makeText(
+                context,
+                "Ingrese una dirección",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.barrio == "" && state.estado == "Pendiente") {
+            Toast.makeText(
+                context,
+                "Ingrese un barrio",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.barrio == "" && state.estado == "Listo") {
+            Toast.makeText(
+                context,
+                "Ingrese un barrio",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+        if (state.telefono !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.RH !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.sexo !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_visita !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_documento !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.num_documento !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.fecha !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_visita !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.cl_visita !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.causa !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.cl_visita == "No efectiva" && state.causa == ""  && state.estado == "Listo") {
+            Toast.makeText(context, "Para una visita no efectiva debe ingresar una causa", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tensiona !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.oximetria !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.findrisk !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.findrisk == "" && state.estado == "Listo") {
+            Toast.makeText(context, "El campo de findrisk no puede estar vacio", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.propiedad == "" && state.estado == "Listo") {
+            Toast.makeText(context, "El campo de estado en propiedad no puede estar vacio", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.peso !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.propiedad !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tensiona !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.tipo_ta !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.toma_ta !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.oximetria !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.toma_oxi !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.resultado_oxi !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (state.estatura !== "" && state.estado == "Pendiente") {
+            Toast.makeText(context, "Formulario pendiente no válido", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
     }
+
 
 }
