@@ -34,9 +34,6 @@ class ClientFormularioCreateViewModel @Inject constructor(
     var formularioResponse by mutableStateOf<Resource<Formulario>?>(null)
         private set
 
-    var errorMessage by mutableStateOf("")
-        private set
-
     //imagenes
     var file: File? = null
     val resultingActivityHandler = ResultingActivityHandler()
