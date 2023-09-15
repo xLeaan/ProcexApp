@@ -499,7 +499,7 @@ fun ClientFormularioCreateContent(paddingValues: PaddingValues,
                     }
                 }
             }
-            Text(text = "Si la respuesta es No, no debe cambiar las fechas siguientes")
+            Text(text = "Si la respuesta es No, no debe cambiar los dos campos siguientes")
             Spacer(modifier = Modifier.height(5.dp))
             Box(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
