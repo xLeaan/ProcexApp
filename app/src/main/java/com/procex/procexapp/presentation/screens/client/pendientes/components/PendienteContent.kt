@@ -1,4 +1,4 @@
-package com.procex.procexapp.presentation.screens.client.resumen.components
+package com.procex.procexapp.presentation.screens.client.pendientes.components
 
 
 import androidx.compose.runtime.Composable
@@ -38,7 +38,7 @@ fun PendienteContent(
                 modifier = Modifier.padding(16.dp)
             )
             Text(
-                text = "La cantidad de formularios pendietes son: $formularioCount",
+                text = "La cantidad de formularios pendientes son: $formularioCount",
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
                 modifier = Modifier.padding(16.dp)

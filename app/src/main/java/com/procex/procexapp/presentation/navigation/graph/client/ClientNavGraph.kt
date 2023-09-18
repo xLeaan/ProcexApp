@@ -11,9 +11,8 @@ import com.procex.procexapp.presentation.navigation.graph.profile.ProfileNavGrap
 import com.procex.procexapp.presentation.screens.client.list.ClientFormularioListScreen
 import com.procex.procexapp.presentation.navigation.screen.client.ClientScreen
 import com.procex.procexapp.presentation.navigation.screen.client.PendienteScreen
-import com.procex.procexapp.presentation.screens.client.info.InfoScreen
 import com.procex.procexapp.presentation.screens.client.resumen.ListoScreen
-import com.procex.procexapp.presentation.screens.client.resumen.PendienteScreen
+import com.procex.procexapp.presentation.screens.client.pendientes.PendienteScreen
 import com.procex.procexapp.presentation.screens.client.resumen.ResumenScreen
 import com.procex.procexapp.presentation.screens.profile.info.ProfileScreen
 

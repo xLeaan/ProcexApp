@@ -9,7 +9,6 @@ import androidx.navigation.NavHostController
 import com.procex.procexapp.domain.util.Resource
 import com.procex.procexapp.presentation.components.ProgressBar
 import com.procex.procexapp.presentation.screens.client.pendientes.ClientFormularioPendienteViewModel
-import com.procex.procexapp.presentation.screens.client.resumen.components.PendienteContent
 
 @Composable
 fun GetPendiente(navController: NavHostController,

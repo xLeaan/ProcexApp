@@ -1,4 +1,4 @@
-package com.procex.procexapp.presentation.screens.client.resumen
+package com.procex.procexapp.presentation.screens.client.pendientes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
