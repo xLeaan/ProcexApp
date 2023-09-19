@@ -38,16 +38,21 @@ import com.procex.procexapp.presentation.components.DefaultSearchView
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.screens.client.list.components.GetFormulario
 import com.procex.procexapp.presentation.ui.Blue200
+import com.procex.procexapp.presentation.ui.Gray200
+import com.procex.procexapp.presentation.ui.Green20
+import com.procex.procexapp.presentation.ui.Green30
 import com.procex.procexapp.presentation.ui.Green40
 import com.procex.procexapp.presentation.ui.Purple40
+import com.procex.procexapp.presentation.ui.PurpleGrey80
 import com.procex.procexapp.presentation.ui.Red200
+import com.procex.procexapp.presentation.ui.White10
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientFormularioListScreen(navController: NavHostController, vm: ClientFormularioListViewModel = hiltViewModel()) {
 
-    val shape = CircleShape // Forma de círculo personalizada
+    val shape = CircleShape
     val buttonSize = 38.dp
 
     Scaffold(
@@ -81,7 +86,8 @@ fun ClientFormularioListScreen(navController: NavHostController, vm: ClientFormu
                 Spacer(modifier = Modifier.height(20.dp))
                 FloatingActionButton(
                     onClick = { navController.navigate(route = Graph.LISTO) },
-                    modifier = Modifier.size(buttonSize).clip(shape)
+                    modifier = Modifier.size(buttonSize).clip(shape),
+                    backgroundColor = PurpleGrey80
                 ) {
                     Icon(
                         imageVector = Icons.Default.CheckCircle,
@@ -92,7 +98,8 @@ fun ClientFormularioListScreen(navController: NavHostController, vm: ClientFormu
                 Spacer(modifier = Modifier.height(20.dp))
                 FloatingActionButton(
                     onClick = { navController.navigate(route = Graph.PENDIENTE) },
-                    modifier = Modifier.size(buttonSize).clip(shape)
+                    modifier = Modifier.size(buttonSize).clip(shape),
+                    backgroundColor = White10
                 ) {
                     Icon(
                         imageVector = Icons.Default.Warning,
@@ -102,12 +109,13 @@ fun ClientFormularioListScreen(navController: NavHostController, vm: ClientFormu
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 FloatingActionButton(
-                    onClick = { navController.navigate(route = Graph.CLIENT_FORMULARIO) }
+                    onClick = { navController.navigate(route = Graph.CLIENT_FORMULARIO) },
+                    backgroundColor = Green30
                 ) {
                     Icon(
                         imageVector = Icons.Default.Add,
                         contentDescription = "",
-                        tint = Color.Blue
+                        tint = Green20
                     )
                 }
             }
