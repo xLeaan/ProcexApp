@@ -14,14 +14,6 @@ import com.procex.procexapp.presentation.screens.profile.info.components.Profile
 @Composable
 fun InfoScreen(navController: NavHostController){
     Scaffold(
-        topBar = {
-            DefaultTopBar(
-                title = "Información",
-                upAvailable = true,
-                navController = navController
-            )
-        },
-        modifier = Modifier.background(Color.LightGray)
     ) { paddingValues ->
        InfoContent(paddingValues = paddingValues)
     }

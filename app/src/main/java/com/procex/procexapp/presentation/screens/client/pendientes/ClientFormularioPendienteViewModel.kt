@@ -73,12 +73,4 @@ class ClientFormularioPendienteViewModel @Inject constructor(private val formula
         }
     }
 
-    fun onSearchInput(value: String) {
-        search = value
-    }
-
-    fun onTipoDocumentoInput(value: String) {
-        tipoDocumento = value
-    }
-
 }

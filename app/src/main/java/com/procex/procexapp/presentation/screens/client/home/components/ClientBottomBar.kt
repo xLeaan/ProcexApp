@@ -10,8 +10,7 @@ import com.procex.procexapp.presentation.navigation.screen.client.ClientScreen
 fun ClientBottomBar(navController: NavHostController){
     val screens = listOf(
         ClientScreen.Formulario,
-        ClientScreen.Listo,
-        ClientScreen.Pendiente,
+        ClientScreen.Info,
         ClientScreen.Resumen,
         ClientScreen.Perfil
     )

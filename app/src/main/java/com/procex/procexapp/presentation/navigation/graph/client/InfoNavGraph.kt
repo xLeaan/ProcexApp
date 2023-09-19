@@ -10,6 +10,7 @@ import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.navigation.screen.client.ClientFormularioScreen
 import com.procex.procexapp.presentation.navigation.screen.client.InfoScreen
 import com.procex.procexapp.presentation.navigation.screen.client.PendienteScreen
+import com.procex.procexapp.presentation.navigation.screen.client.ResumenScreen
 import com.procex.procexapp.presentation.screens.client.formulario.create.ClientFormularioCreateScreen
 import com.procex.procexapp.presentation.screens.client.info.InfoScreen
 import com.procex.procexapp.presentation.screens.profile.update.ProfileUpdateScreen
@@ -17,11 +18,8 @@ import com.procex.procexapp.presentation.screens.profile.update.ProfileUpdateScr
 fun NavGraphBuilder.InfoNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.INFO,
-        startDestination = ClientFormularioScreen.Info.route
+        startDestination = InfoScreen.InfoUpdate.route
     ) {
-        composable(route = ClientFormularioScreen.Info.route){
-            InfoScreen(navController)
-        }
         composable(
             route = InfoScreen.InfoUpdate.route,
             arguments = listOf(navArgument("user") {

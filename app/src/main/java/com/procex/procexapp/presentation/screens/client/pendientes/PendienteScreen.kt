@@ -20,6 +20,14 @@ import com.procex.procexapp.presentation.screens.client.pendientes.components.Ge
 @Composable
 fun PendienteScreen(navController: NavHostController){
     Scaffold(
+        topBar = {
+            DefaultTopBar(
+                title = "Formularios pendientes",
+                upAvailable = true,
+                navController = navController
+            )
+        },
+        modifier = Modifier.background(Color.LightGray)
     ) { paddingValues ->
         GetPendiente(navController, paddingValues)
     }

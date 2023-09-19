@@ -26,19 +26,8 @@ import com.procex.procexapp.presentation.ui.Red200
 
 @Composable
 fun ResumenScreen(navController: NavHostController, formulario: List<Formulario>){
-    Scaffold(floatingActionButton = {
-        FloatingActionButton(
-            modifier = Modifier.padding(bottom = 60.dp),
-            onClick = { navController.navigate(route = Graph.INFO) },
-            backgroundColor = Gray200
-        ) {
-            Icon(
-                imageVector = Icons.Default.Info,
-                contentDescription = "",
-                tint = Red100
-            )
-        }
-    }){paddingValues ->
+    Scaffold()
+    {paddingValues ->
         GetResumen(paddingValues)
 
     }

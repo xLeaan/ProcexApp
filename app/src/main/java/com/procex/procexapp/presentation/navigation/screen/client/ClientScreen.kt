@@ -22,19 +22,14 @@ sealed class ClientScreen(
         title = "Form.",
         icon = Icons.Default.List
     )
-    object Listo: ClientScreen(
-        route = "client/listo",
-        title = "Listo",
-        icon = Icons.Default.CheckCircle
-    )
-    object Pendiente: ClientScreen(
-        route = "client/pendiente",
-        title = "Nv.",
-        icon = Icons.Default.AddCircle
+    object Info: ClientScreen(
+        route = "client/info",
+        title = "Info.",
+        icon = Icons.Default.Info
     )
     object Resumen: ClientScreen(
         route = "client/resumen",
-        title = "Resmn.",
+        title = "Resumen",
         icon = Icons.Default.Face
     )
     object Perfil: ClientScreen(

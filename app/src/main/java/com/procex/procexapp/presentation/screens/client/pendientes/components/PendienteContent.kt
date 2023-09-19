@@ -32,12 +32,6 @@ fun PendienteContent(
     ) {
         item {
             Text(
-                text = "Formularios pendientes",
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                modifier = Modifier.padding(16.dp)
-            )
-            Text(
                 text = "La cantidad de formularios pendientes son: $formularioCount",
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,

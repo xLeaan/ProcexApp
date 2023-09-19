@@ -1,4 +1,4 @@
-package com.procex.procexapp.presentation.screens.client.resumen
+package com.procex.procexapp.presentation.screens.client.listo
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
@@ -20,6 +20,14 @@ import com.procex.procexapp.presentation.screens.client.pendientes.components.Ge
 @Composable
 fun ListoScreen(navController: NavHostController){
     Scaffold(
+        topBar = {
+        DefaultTopBar(
+            title = "Formularios listos",
+            upAvailable = true,
+            navController = navController
+        )
+    },
+        modifier = Modifier.background(Color.LightGray)
     ) { paddingValues ->
         GetListo(navController, paddingValues)
     }

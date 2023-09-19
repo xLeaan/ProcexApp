@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -52,7 +53,7 @@ fun InfoContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewMod
     Box(
         modifier = Modifier
             .padding(paddingValues = paddingValues)
-            .padding(bottom = 2.dp)
+            .padding(bottom = 55.dp)
     ) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -88,23 +89,22 @@ fun InfoContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewMod
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(
-                    topEnd = 60.dp,
+                    topEnd = 40.dp,
                     topStart = 40.dp
                 ),
                 backgroundColor = Color.White.copy(alpha = 0.7f)
             ) {
                 Column(
-                    modifier = Modifier.padding(20.dp)
+                    modifier = Modifier.padding(15.dp)
                 ) {
-
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 10.dp),
+                            .padding(top = 15.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(
-                            modifier = Modifier.padding(horizontal = 5.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp)
                         ) {
                             Text(text = "Sus solicitudes serán atendidas a este correo:")
                             Text(
@@ -121,7 +121,7 @@ fun InfoContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewMod
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(
-                            modifier = Modifier.padding(horizontal = 5.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp)
                         ) {
                             Text(text = "Números móviles para soporte via Whatsapp (sólo chat):")
                             Text(
@@ -134,11 +134,11 @@ fun InfoContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewMod
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 15.dp),
+                            .padding(top = 10.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(
-                            modifier = Modifier.padding(horizontal = 5.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp)
                         ) {
                             Text(text = "Línea atención telefónica:")
                             Text(

@@ -33,12 +33,6 @@ fun ListoContent(
     ) {
         item {
             Text(
-                text = "Formularios Listos",
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                modifier = Modifier.padding(16.dp)
-            )
-            Text(
                 text = "La cantidad de formularios listos son: $formularioCount",
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
