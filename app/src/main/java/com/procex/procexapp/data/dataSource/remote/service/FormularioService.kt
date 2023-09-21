@@ -24,12 +24,12 @@ interface FormularioService {
     @GET("formulario/pendiente")
     suspend fun findNotReady(): Response<List<Formulario>>
 
-    @GET("formulario/search/{num_documento}")
+    @GET("formulario/searchn/{num_documento}")
     suspend fun findByNum(
         @Path("num_documento") num_documento: String
     ): Response<List<Formulario>>
 
-    @GET("formulario/searcht/{tipo_documento}")
+    @GET("formulario/search/{tipo_documento}")
     suspend fun findByType(
         @Path("tipo_documento") tipo_documento: String
     ): Response<List<Formulario>>

@@ -21,6 +21,7 @@ fun AdminFormularioListContent(navController: NavHostController, formulario: Lis
         modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues = paddingValues)
+            .padding(bottom = 55.dp)
     ){
         val formularioCount = formulario.size
         item {

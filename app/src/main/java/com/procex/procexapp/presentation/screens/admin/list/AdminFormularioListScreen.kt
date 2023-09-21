@@ -26,31 +26,31 @@ fun AdminFormularioListScreen(navController: NavHostController, vm: AdminFormula
     vm.getFormulario()
 
    Scaffold(
-        topBar = {
-            DefaultSearchView(
-                value = vm.search,
-                onValueChange = { text ->
-                    vm.onSearchInput(text)
-                },
-                onTipoDocumentoChange = { selectedTP ->
-                    vm.onTipoDocumentoInput(selectedTP)
-                },
-                navController = navController,
-                onClick = {
-                    if (vm.tipoDocumento.isNotBlank() && vm.search.isNotBlank()) {
-                        vm.getFormularioByTypeAndNum(vm.tipoDocumento, vm.search)
-                    } else if (vm.tipoDocumento.isNotBlank()) {
-                        vm.getFormularioByType(vm.tipoDocumento)
-                    } else if (vm.search.isNotBlank()) {
-                        vm.getFormularioByNum(vm.search)
-                    }
-                }
-            )
-        },
+       topBar = {
+           DefaultSearchView(
+               value = vm.search,
+               onValueChange = { text ->
+                   vm.onSearchInput(text)
+               },
+               onTipoDocumentoChange = { selectedTP ->
+                   vm.onTipoDocumentoInput(selectedTP)
+               },
+               navController = navController,
+               onClick = {
+                   if (vm.tipoDocumento.isNotBlank() && vm.search.isNotBlank()) {
+                       vm.getFormularioByTypeAndNum(vm.tipoDocumento, vm.search)
+                   } else if (vm.tipoDocumento.isNotBlank()) {
+                       vm.getFormularioByType(vm.tipoDocumento)
+                   } else if (vm.search.isNotBlank()) {
+                       vm.getFormularioByNum(vm.search)
+                   }
+               }
+           )
+       },
         floatingActionButton = {
             FloatingActionButton(
                 modifier = Modifier.padding(bottom = 60.dp),
-                onClick = { navController.navigate(route = Graph.CLIENT_FORMULARIO) }
+                onClick = { navController.navigate(route = Graph.ADMIN_FORMULARIO) }
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,

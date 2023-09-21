@@ -121,6 +121,10 @@ class AdminFormularioUpdateViewModel @Inject constructor(
         }
     }
 
+    fun onEstadoInput(input: String){
+        state = state.copy(estado = input)
+    }
+
     fun onName_medInput(input: String){
         state = state.copy(name_med = input)
     }

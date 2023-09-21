@@ -41,7 +41,7 @@ class ClientFormularioPendienteViewModel @Inject constructor(private val formula
         formularioUseCase.getFormulario().collect { data ->
             formularioResponse = data
             if (data is Resource.Success) {
-                formularioLocalList.value = data.data // Guarda los datos localmente para filtrado offline
+                formularioLocalList.value = data.data
             }
         }
     }

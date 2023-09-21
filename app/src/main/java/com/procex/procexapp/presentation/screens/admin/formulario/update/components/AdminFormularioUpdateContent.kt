@@ -64,6 +64,9 @@ fun AdminFormularioUpdateContent(paddingValues: PaddingValues, vm: AdminFormular
     vm.resultingActivityHandler.handle()
     val stateDialog = remember { mutableStateOf(false) }
 
+    val opcionesEstado = listOf("Listo", "Pendiente")
+    var estadoExpanded by remember { mutableStateOf(false) }
+
     val opcionesSexo = listOf("Femenino", "Masculino")
     var sexoExpanded by remember { mutableStateOf(false) }
 
@@ -131,6 +134,39 @@ fun AdminFormularioUpdateContent(paddingValues: PaddingValues, vm: AdminFormular
                 .padding(20.dp)
                 .verticalScroll(rememberScrollState())
         ) {
+            Spacer(modifier = Modifier.height(5.dp))
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = state.estado,
+                    onValueChange = { vm.onEstadoInput(it) },
+                    label = { Text("Estado del formulario") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowDropDown,
+                            contentDescription = "Expandir estado",
+                            modifier = Modifier.clickable { estadoExpanded = true }
+                        )
+                    }
+                )
+                DropdownMenu(
+                    expanded = estadoExpanded,
+                    onDismissRequest = { estadoExpanded = false }
+                ) {
+                    opcionesEstado.forEach { option ->
+                        DropdownMenuItem(
+                            onClick = {
+                                vm.onEstadoInput(option)
+                                estadoExpanded = false
+                            }
+                        ) {
+                            Text(text = option)
+                        }
+                    }
+                }
+            }
             DefaultTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = state.name_med,
