@@ -1,4 +1,4 @@
-package com.procex.procexapp.presentation.theme.components.admin.home
+package com.procex.procexapp.presentation.screens.admin.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

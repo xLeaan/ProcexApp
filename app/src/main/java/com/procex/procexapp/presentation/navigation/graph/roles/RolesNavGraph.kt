@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.procex.procexapp.presentation.navigation.Graph
 import com.procex.procexapp.presentation.navigation.screen.roles.RolesScreen
-import com.procex.procexapp.presentation.theme.components.admin.home.AdminHomeScreen
+import com.procex.procexapp.presentation.screens.admin.home.AdminHomeScreen
 import com.procex.procexapp.presentation.screens.client.home.ClientHomeScreen
 import com.procex.procexapp.presentation.screens.roles.RolesScreen
 
